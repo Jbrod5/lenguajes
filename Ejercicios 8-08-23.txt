@@ -1,0 +1,107 @@
+Ejercicios 8/08/23 	| Jorge Anibal Bravo Rodríguez - 202131782
+
+1. L=(an bn cn | n >= 1) w* ========================================
+un lenguaje que tiene la misma cantidad de a's, b's y c's
+
+validar aabbcc, aaabbbccc
+
+1. A = aBc
+2. B = bB
+3. B = b
+4. B = A
+
+
+1,4,2,3 
+aBc
+a(aBc)c
+a(a(bB)c)c
+a(a(bb)c)c
+aabbcc
+
+1,4,5,5,2,2
+aBc
+a(aBc)c
+a(a(aBc)c)c
+a(a(a(bB)c)c)c
+a(a(a(b(bB))c)c)c
+a(a(a(b(b(b)))c)c)c
+aaabbbccc
+
+2. Dada la gramatica d.c.: ==============================
+	1. S -> aSb		
+	2. S -> X		Determine si las cadenas 
+	3. X -> bXc		pertenecen al lenguaje
+	4. X -> Y		generado por esta gramática
+	5. Y -> cYd
+	6. Y -> (epsilon)
+
+
+	abcd : La cadena no puede formarse debido a que 'a' solo está contenida 	       en 1 junto 'a' S y 'b', no hay manera de pasar por encima de la b 	       para producir 'c' y 'd' 
+	  1,(2,4,6)
+	  aSb -> ab
+	  5,6
+	  cYd
+	  cd
+
+	aabbcc: tampoco puede producirse, pues no hay forma de producir una 'a' 
+		sin producir con ella una 'b, igualmente una 'c' sin producir 
+		junto a ella una 'b' o una 'c'
+
+	  1,1,(2,4,6)
+	  aSb
+	  a(aSb)b
+	  aabb
+	  3,3,(4,6)
+	  bXc
+	  b(bXc)c
+          bbcc
+
+	aaabbbcccddd: nuevamente, no hay forma de pasar por ecima de la 'b', para 
+		      que haya una 'a' en la cadena debe quedar una 'b' al final 
+          1,1,1,(2,4,6)
+	  aSb
+	  a(aSb)b
+	  a(a(aSb)b)b
+	  aaabbb
+
+	  5,5,5,6
+          cYd
+	  c(cYd)d
+	  c(c(cYd)d)d
+	  cccddd
+
+============================ SEGUNDA DIAPOSITIVA ================================
+
+1. Lenguale de cadenas de la forma anbn
+   como la forma es 'a' seguida de 'b' y comparten n, entonces
+   1. S -> aSb
+   2. S -> epsilon
+
+2. Conjunto de cadenas {0n1n | n ≥ 1} (por favor, le suplico que no llame h al inicio :'c)
+   1. S -> 0S1
+   2. S -> 01
+3. Conjunto de todas las cadenas formadas por uno o más ceros seguidos del mismo número de unos
+   1. P -> 0P1
+   2. P -> 01
+4. Lenguaje que siempre forman un par de paréntesis 
+   1. S -> (S)
+   2. S -> )S)
+   3. S -> (S(
+   4. S -> )S(
+   5. S -> S()
+   6. S -> S))
+   7. S -> S((
+   8. S -> S)(
+   9. S -> ()S
+  10. S -> ))S
+  11. S -> ((S
+  12. S -> )(S
+  13. S -> ()
+  14. S -> ))
+  15. S -> ((
+  16. S -> )(
+   
+	  
+	  
+	
+	
