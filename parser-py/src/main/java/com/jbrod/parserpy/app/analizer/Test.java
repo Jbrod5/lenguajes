@@ -1,9 +1,13 @@
 
 package com.jbrod.parserpy.app.analizer;
 
+import com.jbrod.parserpy.app.analizer.lexicon.TokenPlotter;
+
 import com.jbrod.parserpy.app.analizer.lexicon.Analizer;
 import com.jbrod.parserpy.app.analizer.lexicon.Token;
 import java.util.List;
+import java.util.Scanner;
+
 
 /**
  *
@@ -32,6 +36,17 @@ public class Test {
         }
         
         an.generateAnalysisReport();
+        
+        TokenPlotter tp = new TokenPlotter(); 
+        int salir = 10; 
+        Scanner sc = new Scanner(System.in);
+        do{
+            System.out.println("Ingrese el indice del lexema a graficar");
+            int in = sc.nextInt();
+            tp.plot(lst.get(in));
+            System.out.println("0 PARA SALIR");
+            salir = sc.nextInt();
+        }while(salir!=0);
         
         
     }
