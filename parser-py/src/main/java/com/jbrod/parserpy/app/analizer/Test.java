@@ -31,6 +31,8 @@ public class Test {
                     " | lexema: " + token.getLexeme());
         }
         
+        an.generateAnalysisReport();
+        
         
     }
 

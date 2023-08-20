@@ -1,6 +1,7 @@
 
 package com.jbrod.parserpy.app.analizer.lexicon;
 
+import com.jbrod.parserpy.app.FileGenerator;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -123,7 +124,7 @@ public class Analizer {
     
     
     /**
-     * Crea un nuevo Token y lo añade al ArrayList
+     * Crea un nuevo Token y lo añade al ArrayList.
      **/
     private void createToken(String buffer, int row, int column, boolean text){
         
@@ -139,7 +140,8 @@ public class Analizer {
 
             } else if(text){ //constante de texto
                 
-                tokenType = TokenTypeEnum.CONSTANT.toString(); 
+                tokenType = TokenTypeEnum.CONSTANT.toString();
+                buffer = "\"" + buffer +"\"";
                 pattern = "[a-z|A-Z|0-9|]+";
                 
             }else if(idValidator.validIdentifier(buffer)){
@@ -149,7 +151,7 @@ public class Analizer {
                 
             }else if(buffer.charAt(0) == '#'){
                 tokenType = TokenTypeEnum.COMMENT.toString(); 
-                pattern = "# [.*] \n";
+                pattern = "# [.*] \\n";
                 
             }else if(numValidator.validNumber(buffer)){
                 tokenType = TokenTypeEnum.CONSTANT.toString(); 
@@ -169,6 +171,40 @@ public class Analizer {
         
     }
 
+    /**
+     * Genera el reporte del analisis en un archivo de tipo csv.\n
+     * Utiliza el modelo proporcionado en el documento de la prácita.\n
+     * Token | Patron | Lexema | Linea | Columna
+     * @see Token.
+     **/
+    public void generateAnalysisReport(){
+        String report = "Token,Patron,Lexema,Linea,Columna";
+        
+        //recorre la lista de Tokens
+        Token actual;
+        for (int i = 0; i < listToken.size(); i++) {
+           actual = listToken.get(i);
+           String tktp, ptrn, lxm,rw,clmn;
+           
+           tktp     = actual.getTokenType               () + ",";
+           ptrn     = actual.getPattern                 () + ","; 
+           lxm      = actual.getLexeme                  () + ","; 
+           rw       = String.valueOf(actual.getRow    ())+ ","; 
+           clmn     = String.valueOf(actual.getColumn ())+ ",";
+           
+           if(actual.getPattern().equals(",")){
+               ptrn     = "-comma-,";
+               lxm      = "-comma-,";
+           }
+           
+           report += "\n" + tktp + ptrn + lxm + rw + clmn;
+        }
+        
+        //mandar a crear el csv
+        FileGenerator fg = new FileGenerator(); 
+        fg.generate(report, null, "csv", "report");
+    }
+    
     public List<Token> getListToken() {
         return listToken;
     }
