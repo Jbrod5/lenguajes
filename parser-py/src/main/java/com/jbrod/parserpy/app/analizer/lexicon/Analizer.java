@@ -4,6 +4,7 @@ package com.jbrod.parserpy.app.analizer.lexicon;
 import com.jbrod.parserpy.app.FileGenerator;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -20,6 +21,8 @@ public class Analizer {
     
     private IdValidator idValidator; 
     private NumberValidator numValidator;  
+    
+    private String report; 
 
     public Analizer() {
         
@@ -41,6 +44,7 @@ public class Analizer {
      **/
     public void searchMatches(String textInput){
 
+        listToken.clear();
         textInput += " \n";
         char[] input = textInput.toCharArray();
         int rows = 0; 
@@ -86,7 +90,7 @@ public class Analizer {
                     break; 
                     
                     
-                case '\n':
+                case '\n', '\r':
                     if(!text){
                         columns = 1;
                         if(comment){
@@ -95,7 +99,7 @@ public class Analizer {
                             comment = false;
                         }
                          
-                    }else{
+                    }else{  
                         buffer = buffer + c; 
                     }
                     rows ++;
@@ -178,7 +182,9 @@ public class Analizer {
      * @see Token.
      **/
     public void generateAnalysisReport(){
-        String report = "Token,Patron,Lexema,Linea,Columna";
+        report = null;
+        
+        report = "Token,Patron,Lexema,Linea,Columna";
         
         //recorre la lista de Tokens
         Token actual;
@@ -192,6 +198,9 @@ public class Analizer {
            rw       = String.valueOf(actual.getRow    ())+ ","; 
            clmn     = String.valueOf(actual.getColumn ())+ ",";
            
+           ptrn.replaceAll("(\n|\r)", "");
+           lxm.replaceAll("(\n|\r)", "");
+           
            if(actual.getPattern().equals(",")){
                ptrn     = "-comma-,";
                lxm      = "-comma-,";
@@ -203,12 +212,15 @@ public class Analizer {
         //mandar a crear el csv
         FileGenerator fg = new FileGenerator(); 
         fg.generate(report, null, "csv", "report");
+        
     }
     
     public List<Token> getListToken() {
         return listToken;
     }
-    
-    
+
+    public String getReport() {
+        return report;
+    }
     
 }

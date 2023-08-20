@@ -15,7 +15,12 @@ import java.util.Scanner;
  */
 public class Test {
     
-    public static void main(String[] args) {
+    
+        public static void main(String[] args) {
+        MainClass mainClass = new MainClass();
+        mainClass.assignRel();
+        }
+    /*public static void main(String[] args) {
         
         String prueba = ", . ( ) **= += %= = 10 31.2f 20.2  20.0.36.6 \n\"esto es un texto\' int double    \ndef class enum INT \n + - *   \nand  = True false $dentifie 1ero"
                 + " \n"
@@ -49,6 +54,6 @@ public class Test {
         }while(salir!=0);
         
         
-    }
+    }*/
 
 }

@@ -13,9 +13,9 @@ public class FileGenerator {
     private File file; 
     /**
      * @param toPrint: String con el contenido a almacenar en el archivo.
-     * @param path: String con la ruta donde se guardara el archivo (DEBE TERMINAR EN /).
-     * @param extension: String con la extension que tendra el archivo.
-     * @param name: String con el nombre que tendra el archivo
+     * @param path: String con la ruta donde se guardara el archivo (puede ser nulo para guardar al nivel del jar).
+     * @param extension: String con la extension que tendra el archivo (SIN PUNTO).
+     * @param name: String con el nombre que tendra el archivo.
      **/
     public void generate(String toPrint, String path, String extension, String name){
         if(path == null){
@@ -23,22 +23,27 @@ public class FileGenerator {
         }
         
         path = path + name  + "." + extension;
+        System.out.println("El fg debe guardar: " + path);
         
         try {
             file = new File(path);
+            file.delete();
             
             if(!file.exists()){
                 file.createNewFile();
             }else{ //reescribir el archivo 
-                file.delete();
+                System.out.println("borrado: " + file.delete());
                 file.createNewFile();
             }
             
             FileWriter fw = new FileWriter(file);
+            fw.write("");
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(toPrint);
             bw.close();
-            System.out.println(path);
+            fw.close();
+            
+            System.out.println("se imprimio: " +  path);
             
         } catch (Exception e) {
             
