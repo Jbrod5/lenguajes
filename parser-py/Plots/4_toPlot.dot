@@ -1,6 +1,0 @@
-digraph Plot{
-   rankdir = LR;
-   label = "OTHERS: )";
-    n0[style = filled, color = green, label = ")" ,shape = doublecircle];
-    n0 -> n1;
-}

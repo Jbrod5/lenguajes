@@ -68,30 +68,16 @@ public class MainClass {
         List<Token> lsToken = lexiconAnalizer.getListToken();
         TokenPlotter tokenPlotter = new TokenPlotter();
         tokenPlotter.removeAllPlots();
+        
+        String html = "";
         for (int i = 0; i < lsToken.size(); i ++) {
-            tokenPlotter.plot(lsToken.get(i), i + "_Plot");
-            
+            Token actual = lsToken.get(i);
+            tokenPlotter.plot(actual, i + "_Plot");
+            html += actual.getGraphHtml();
         }
         
-        
-        
-        /*
-        TokenPlotter tokenPlotter = new TokenPlotter();
-        for (int i = 0; i < lsToken.size(); i++) {
-            
-            try {
-                tokenPlotter.plot(lsToken.get(i), "Plot");
-                Thread.sleep(2000);
-                graphViewer.addGraph("Plot.png");
-            } catch (InterruptedException ex) {
-                Logger.getLogger(MainClass.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-            
-        }*/
-        
-        
-        
+        graphViewer.addGraphsHtml(html);
+        System.out.println(html);
     }
     
     public void openFile(String path){

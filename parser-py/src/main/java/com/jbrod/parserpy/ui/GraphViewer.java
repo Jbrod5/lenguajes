@@ -37,8 +37,27 @@ public class GraphViewer extends javax.swing.JPanel {
            // pnlito.add(new JButton());
             
         }
-       
-       // pnlito.setLayout(new GridLayout(0,5));
+      edpnGraph.setContentType("text/html");
+      
+      edpnGraph.setText("<!DOCTYPE html>\n" +
+"<html lang=\"\">\n" +
+"  <head>\n" +
+"    <meta charset=\"utf-8\">\n" +
+"    <title></title>\n" +
+"  </head>\n" +
+"  <body>\n" +
+"    <div style=\"border: 2px solid black;margin:4px; text-align: center;\">\n" +
+"      <h1>asu</h1>\n" +
+"      <div style=\"background-color:purple; border: 2px solid black; margin: 2px; border-radius: 100%; width: auto; display: inline-block; padding: 10px;\"><div style=\"border: 2px solid black; margin: 2px; border-radius: 20px ; width: auto; display: inline-block; padding: 10px\">a</div></div>\n" +
+"      ->\n" +
+"      <div style=\"border: 2px solid black; margin: 2px; border-radius: 20px ; width: auto; display: inline-block;\">a</div>\n" +
+"    </div>\n" +
+"    <div style=\"border: 2px solid black; margin: 2px; border-radius: 100%; width: auto; display: inline-block; padding: 10px;\"><div style=\"border: 2px solid black; margin: 2px; border-radius: 20px ; width: auto; display: inline-block; padding: 10px\">a</div></div>\n" +
+"    <div style=\"border: 2px solid black; margin: 2px; border-radius: 20px ; width: auto; display: inline-block;\">a</div>\n" +
+"    <div>b</div>\n" +
+"    <div>c</div>\n" +
+"  </body>\n" +
+"</html>");
     }
 
     public void setMainClass(MainClass mainClass) {
@@ -85,6 +104,9 @@ public class GraphViewer extends javax.swing.JPanel {
         }
     }
     
+    public void addGraphsHtml(String text){
+        edpnGraph.setText(text);
+    }
     public void clearGraphs(){
         //scrl.removeAll();
 
@@ -132,9 +154,14 @@ public class GraphViewer extends javax.swing.JPanel {
 
         scrl = new javax.swing.JScrollPane();
         pnlito = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        edpnGraph = new javax.swing.JEditorPane();
 
         pnlito.setLayout(new java.awt.GridLayout(0, 4));
         scrl.setViewportView(pnlito);
+
+        jScrollPane1.setViewportView(edpnGraph);
+        edpnGraph.getAccessibleContext().setAccessibleDescription("text/html");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -142,20 +169,26 @@ public class GraphViewer extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scrl, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                .addComponent(scrl, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scrl, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1)
+                    .addComponent(scrl, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JEditorPane edpnGraph;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel pnlito;
     private javax.swing.JScrollPane scrl;
     // End of variables declaration//GEN-END:variables

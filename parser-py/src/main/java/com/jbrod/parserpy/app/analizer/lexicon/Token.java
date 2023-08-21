@@ -56,5 +56,47 @@ public class Token {
         this.column = column;
     }    
     
+    public String getGraphHtml(){
+        String graph ="";
+        
+        String color = switch(tokenType){
+            case "ARITHMETIC", "COMPARISION","LOGICAL", "ASSIGNAMENT" -> "blue";
+            case "KEYWORD"              -> "purple" ;
+            case "CONSTANT"             -> "red"    ;
+            case "COMMENT"              -> "grey"   ;
+            case "OTHERS"               -> "green"  ; 
+            case "IDENTIFIER"           -> "yellow"  ;
+                
+            //Caso especial, lexema desconocido    
+            case "LEXICAL_ERROR_unknow_lexeme" -> "orange";
+            default -> "orange";
+                
+        };
+        
+        //Estilo comun para TODOS los nodos del token
+        String style = "style=\"    width: 50px; background-color:" + color + "; border: 2px solid black; margin: 2px; border-radius: 100%; display: inline-block; padding: 10px;\"";
+        
+        //Cabecera: div del token 
+        graph += " <div style=\"border: 2px solid black;margin:4px; text-align: center;\">"
+                + "<h1>" + tokenType + ": " + lexeme + "</h1>"; 
+        
+        //crear div de cada parte del lexema
+        for (int i = 0; i < lexeme.length(); i++) {
+            //verificar si no es el final 
+            if(i < lexeme.length() - 1){
+                graph += "<div " + style + "> " + lexeme.charAt(i) + "</div> &rarr;";
+            }else{
+                graph += "<div style=\"display: inline-block; width: 60px;border: 2px solid black; margin: 2px; border-radius: 20px ; width: auto; display: inline-block; padding: 10px\">";
+                graph += "<div " + style + "> " + lexeme.charAt(i) + "</div>";
+                graph += "</div>";
+            }
+            
+            
+        }
+        
+        graph += "</div> <br/> br/>\n\r";
+        //cerrar cabecera
+        return graph; 
+    }
     
 }

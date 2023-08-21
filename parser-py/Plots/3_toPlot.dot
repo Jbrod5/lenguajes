@@ -1,9 +1,0 @@
-digraph Plot{
-   rankdir = LR;
-   label = "IDENTIFIER: num";
-    n0[style = filled, color = yellow, label = "n"];
-    n1[style = filled, color = yellow, label = "u"];
-    n2[style = filled, color = yellow, label = "m" ,shape = doublecircle];
-    n0 -> n1;
-    n1 -> n2;
-}
