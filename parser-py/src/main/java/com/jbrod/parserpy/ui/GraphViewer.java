@@ -37,27 +37,11 @@ public class GraphViewer extends javax.swing.JPanel {
            // pnlito.add(new JButton());
             
         }
+        remove(pnlito);
+        remove(jScrollPane1);
       edpnGraph.setContentType("text/html");
       
-      edpnGraph.setText("<!DOCTYPE html>\n" +
-"<html lang=\"\">\n" +
-"  <head>\n" +
-"    <meta charset=\"utf-8\">\n" +
-"    <title></title>\n" +
-"  </head>\n" +
-"  <body>\n" +
-"    <div style=\"border: 2px solid black;margin:4px; text-align: center;\">\n" +
-"      <h1>asu</h1>\n" +
-"      <div style=\"background-color:purple; border: 2px solid black; margin: 2px; border-radius: 100%; width: auto; display: inline-block; padding: 10px;\"><div style=\"border: 2px solid black; margin: 2px; border-radius: 20px ; width: auto; display: inline-block; padding: 10px\">a</div></div>\n" +
-"      ->\n" +
-"      <div style=\"border: 2px solid black; margin: 2px; border-radius: 20px ; width: auto; display: inline-block;\">a</div>\n" +
-"    </div>\n" +
-"    <div style=\"border: 2px solid black; margin: 2px; border-radius: 100%; width: auto; display: inline-block; padding: 10px;\"><div style=\"border: 2px solid black; margin: 2px; border-radius: 20px ; width: auto; display: inline-block; padding: 10px\">a</div></div>\n" +
-"    <div style=\"border: 2px solid black; margin: 2px; border-radius: 20px ; width: auto; display: inline-block;\">a</div>\n" +
-"    <div>b</div>\n" +
-"    <div>c</div>\n" +
-"  </body>\n" +
-"</html>");
+      edpnGraph.setText("<h1> Los grafos generados se interpretaran aqui </h1>");
     }
 
     public void setMainClass(MainClass mainClass) {

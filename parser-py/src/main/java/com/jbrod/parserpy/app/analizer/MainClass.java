@@ -1,6 +1,7 @@
 
 package com.jbrod.parserpy.app.analizer;
 
+import com.jbrod.parserpy.app.FileGenerator;
 import com.jbrod.parserpy.app.FileReader;
 import com.jbrod.parserpy.app.analizer.lexicon.Analizer;
 import com.jbrod.parserpy.app.analizer.lexicon.Token;
@@ -10,9 +11,6 @@ import com.jbrod.parserpy.ui.PrincipalFrame;
 import com.jbrod.parserpy.ui.ReportViewer;
 import com.jbrod.parserpy.ui.TextEditor;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  * Clase principal.
  * @author Jorge
@@ -76,6 +74,8 @@ public class MainClass {
             html += actual.getGraphHtml();
         }
         
+        FileGenerator fg = new FileGenerator();
+        fg.generate(html, "", "html", "graphs");
         graphViewer.addGraphsHtml(html);
         System.out.println(html);
     }

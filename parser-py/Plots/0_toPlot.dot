@@ -1,6 +1,6 @@
 digraph Plot{
    rankdir = LR;
-   label = "IDENTIFIER: d";
-    n0[style = filled, color = yellow, label = "d" ,shape = doublecircle];
+   label = "IDENTIFIER: s";
+    n0[style = filled, color = yellow, label = "s" ,shape = doublecircle];
     n0 -> n1;
 }

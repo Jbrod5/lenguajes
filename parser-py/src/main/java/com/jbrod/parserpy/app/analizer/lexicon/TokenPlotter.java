@@ -126,13 +126,13 @@ public class TokenPlotter {
         }*/
         
         
-        
+     
         File file = new File("Plots/");
         
         try {
-            FileUtils.deleteDirectory(file);
-        } catch (IOException ex) {
-            Logger.getLogger(TokenPlotter.class.getName()).log(Level.SEVERE, null, ex);
+            file.delete();
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
         
         file.mkdir(); 
