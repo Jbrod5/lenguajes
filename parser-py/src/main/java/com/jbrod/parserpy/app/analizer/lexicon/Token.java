@@ -95,7 +95,7 @@ public class Token {
             
         }
         
-        graph += "</div> <br/> br/>\n\r";
+        graph += "</div> <br/> <br/>\n\r";
         //cerrar cabecera
         return graph; 
     }
