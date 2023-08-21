@@ -1,6 +1,11 @@
 digraph Plot{
    rankdir = LR;
-   label = "IDENTIFIER: s";
-    n0[style = filled, color = yellow, label = "s" ,shape = doublecircle];
+   label = "IDENTIFIER: puto";
+    n0[style = filled, color = yellow, label = "p"];
+    n1[style = filled, color = yellow, label = "u"];
+    n2[style = filled, color = yellow, label = "t"];
+    n3[style = filled, color = yellow, label = "o" ,shape = doublecircle];
     n0 -> n1;
+    n1 -> n2;
+    n2 -> n3;
 }

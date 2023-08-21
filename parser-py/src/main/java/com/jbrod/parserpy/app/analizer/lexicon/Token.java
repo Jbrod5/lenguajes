@@ -77,7 +77,7 @@ public class Token {
         String style = "style=\"    width: 50px; background-color:" + color + "; border: 2px solid black; margin: 2px; border-radius: 100%; display: inline-block; padding: 10px;\"";
         
         //Cabecera: div del token 
-        graph += " <div style=\"border: 2px solid black;margin:4px; text-align: center;\">"
+        graph += " <div style=\" display: flex; flex-wrap: wrap; border: 2px solid black;margin:4px; text-align: center;\">"
                 + "<h1>" + tokenType + ": " + lexeme + "</h1>"; 
         
         //crear div de cada parte del lexema
@@ -86,7 +86,8 @@ public class Token {
             if(i < lexeme.length() - 1){
                 graph += "<div " + style + "> " + lexeme.charAt(i) + "</div> &rarr;";
             }else{
-                graph += "<div style=\"display: inline-block; width: 60px;border: 2px solid black; margin: 2px; border-radius: 20px ; width: auto; display: inline-block; padding: 10px\">";
+                //display: inline-block; 
+                graph += "<div style=\"display: flex; width: 60px;border: 2px solid black; margin: 2px; border-radius: 20px ; width: auto; display: inline-block; padding: 10px\">";
                 graph += "<div " + style + "> " + lexeme.charAt(i) + "</div>";
                 graph += "</div>";
             }
