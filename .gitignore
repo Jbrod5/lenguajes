@@ -1,2 +1,8 @@
 /target/
 /parser-py/target/
+#ignorar archivos generados por el programa
+*.dot 
+*.png 
+*.csv
+
+
