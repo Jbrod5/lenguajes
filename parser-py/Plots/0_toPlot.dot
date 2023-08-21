@@ -1,13 +1,11 @@
 digraph Plot{
    rankdir = LR;
-   label = "CONSTANT: 12.25";
-    n0[style = filled, color = red, label = "1"];
-    n1[style = filled, color = red, label = "2"];
-    n2[style = filled, color = red, label = "."];
-    n3[style = filled, color = red, label = "2"];
-    n4[style = filled, color = red, label = "5" ,shape = doublecircle];
+   label = "IDENTIFIER: Hola";
+    n0[style = filled, color = yellow, label = "H"];
+    n1[style = filled, color = yellow, label = "o"];
+    n2[style = filled, color = yellow, label = "l"];
+    n3[style = filled, color = yellow, label = "a" ,shape = doublecircle];
     n0 -> n1;
     n1 -> n2;
     n2 -> n3;
-    n3 -> n4;
 }

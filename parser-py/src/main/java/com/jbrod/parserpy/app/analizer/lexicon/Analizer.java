@@ -45,7 +45,7 @@ public class Analizer {
     public void searchMatches(String textInput){
 
         listToken.clear();
-        textInput += " \n";
+        textInput += " \n\r";
         char[] input = textInput.toCharArray();
         int rows = 0; 
         int columns = 1;
@@ -88,7 +88,7 @@ public class Analizer {
                     }
                     text = !text; //cambia de estado el boolean texto
                     break; 
-                    
+                     
                     
                 case '\n', '\r':
                     if(!text){

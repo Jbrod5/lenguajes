@@ -1,21 +1,7 @@
 digraph Plot{
    rankdir = LR;
-   label = "LEXICAL_ERROR_unknow_lexeme: cadena;as";
-    n0[style = filled, color = orange, label = "c"];
-    n1[style = filled, color = orange, label = "a"];
-    n2[style = filled, color = orange, label = "d"];
-    n3[style = filled, color = orange, label = "e"];
-    n4[style = filled, color = orange, label = "n"];
-    n5[style = filled, color = orange, label = "a"];
-    n6[style = filled, color = orange, label = ";"];
-    n7[style = filled, color = orange, label = "a"];
-    n8[style = filled, color = orange, label = "s" ,shape = doublecircle];
+   label = "IDENTIFIER: se";
+    n0[style = filled, color = yellow, label = "s"];
+    n1[style = filled, color = yellow, label = "e" ,shape = doublecircle];
     n0 -> n1;
-    n1 -> n2;
-    n2 -> n3;
-    n3 -> n4;
-    n4 -> n5;
-    n5 -> n6;
-    n6 -> n7;
-    n7 -> n8;
 }
