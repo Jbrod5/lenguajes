@@ -5,6 +5,8 @@
 package com.jbrod.parserpy.ui;
 
 import com.jbrod.parserpy.app.analizer.MainClass;
+import com.jbrod.parserpy.app.analizer.lexicon.Token;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -28,15 +30,24 @@ public class ReportViewer extends javax.swing.JPanel {
         this.mainClass = mainClass;
     }
     
-    public void addReport(String report){
-        tblReport.removeAll();
-        
-        //covertir el reporte a array
-        String[] arr = report.split(",");
+    public void addReport(List<Token> lsToken){
        
-        tbModel.addRow(arr);
+        DefaultTableModel model = (DefaultTableModel) tblReport.getModel(); 
+        model.setColumnCount(5);
+        model.setRowCount(lsToken.size());
+        //Tabla: Token | Patron | Lexema | Linea | Columna
         
-        
+        for (int i = 0; i < lsToken.size(); i++) {
+            Token actual = lsToken.get(i);
+           
+            model.setValueAt(actual.getTokenType    (), i, 0); //Token
+            model.setValueAt(actual.getPattern      (), i, 1); //Patron
+            model.setValueAt(actual.getLexeme       (), i, 2); //Lexema
+            model.setValueAt(actual.getRow          (), i, 3); //Linea
+            model.setValueAt(actual.getColumn       (), i, 4); //Columna 
+           
+        }
+        tblReport.removeAll();
             
         
     }
@@ -54,13 +65,10 @@ public class ReportViewer extends javax.swing.JPanel {
 
         tblReport.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+
             },
             new String [] {
-
+                "Token", "Patron", "Lexema", "Linea", "Columna"
             }
         ));
         jScrollPane1.setViewportView(tblReport);

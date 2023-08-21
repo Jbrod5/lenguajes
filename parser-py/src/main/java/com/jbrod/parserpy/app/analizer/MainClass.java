@@ -56,7 +56,8 @@ public class MainClass {
         
         lexiconAnalizer.searchMatches(inputToAnalize);
         lexiconAnalizer.generateAnalysisReport();
-        reportViewer.addReport(lexiconAnalizer.getReport());
+        
+        reportViewer.addReport(lexiconAnalizer.getListToken());
         
         
         //------------------ Agregar grafos ----------------

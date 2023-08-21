@@ -125,7 +125,10 @@ public class TokenPlotter {
             Logger.getLogger(TokenPlotter.class.getName()).log(Level.SEVERE, null, ex);
         }*/
         
+        
+        
         File file = new File("Plots/");
+        
         try {
             FileUtils.deleteDirectory(file);
         } catch (IOException ex) {

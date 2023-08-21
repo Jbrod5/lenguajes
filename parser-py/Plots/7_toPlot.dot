@@ -1,0 +1,7 @@
+digraph Plot{
+   rankdir = LR;
+   label = "IDENTIFIER: fj";
+    n0[style = filled, color = yellow, label = "f"];
+    n1[style = filled, color = yellow, label = "j" ,shape = doublecircle];
+    n0 -> n1;
+}

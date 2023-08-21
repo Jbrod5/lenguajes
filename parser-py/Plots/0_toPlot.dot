@@ -1,0 +1,27 @@
+digraph Plot{
+   rankdir = LR;
+   label = "IDENTIFIER: jkfdskjdfskj";
+    n0[style = filled, color = yellow, label = "j"];
+    n1[style = filled, color = yellow, label = "k"];
+    n2[style = filled, color = yellow, label = "f"];
+    n3[style = filled, color = yellow, label = "d"];
+    n4[style = filled, color = yellow, label = "s"];
+    n5[style = filled, color = yellow, label = "k"];
+    n6[style = filled, color = yellow, label = "j"];
+    n7[style = filled, color = yellow, label = "d"];
+    n8[style = filled, color = yellow, label = "f"];
+    n9[style = filled, color = yellow, label = "s"];
+    n10[style = filled, color = yellow, label = "k"];
+    n11[style = filled, color = yellow, label = "j" ,shape = doublecircle];
+    n0 -> n1;
+    n1 -> n2;
+    n2 -> n3;
+    n3 -> n4;
+    n4 -> n5;
+    n5 -> n6;
+    n6 -> n7;
+    n7 -> n8;
+    n8 -> n9;
+    n9 -> n10;
+    n10 -> n11;
+}
