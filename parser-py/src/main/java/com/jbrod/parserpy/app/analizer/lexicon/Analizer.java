@@ -3,8 +3,6 @@ package com.jbrod.parserpy.app.analizer.lexicon;
 
 import com.jbrod.parserpy.app.FileGenerator;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -131,9 +129,10 @@ public class Analizer {
      * Crea un nuevo Token y lo añade al ArrayList.
      **/
     private void createToken(String buffer, int row, int column, boolean text){
-        
+        row++;
         String tokenType = ""; 
         String pattern = "";
+        boolean validate = false; 
         
         if(!buffer.isBlank()){
             
@@ -160,19 +159,61 @@ public class Analizer {
             }else if(numValidator.validNumber(buffer)){
                 tokenType = TokenTypeEnum.CONSTANT.toString(); 
                 pattern = "[0 - 9]+  | ( [ 0 - 9]+ . [ 0 - 9] +  | [ 0 - 9]+ . [ 0 - 9] + f)";
-            }else{
+            }else {
                 
-                //NO RECONOCIDO
-                tokenType = TokenTypeEnum.LEXICAL_ERROR_unknow_lexeme.toString(); 
-                pattern = buffer;
+                    validate = recognizeSeparators(buffer, column, row);
+
+                    //NO RECONOCIDO
+                    tokenType = TokenTypeEnum.LEXICAL_ERROR_unknow_lexeme.toString(); 
+                    pattern = buffer;
+                }
                 
             }
 
-            Token token = new Token(tokenType, pattern, buffer, row, column);
-            listToken.add(token);
+            if(!validate){
+                
+                Token token = new Token(tokenType, pattern, buffer, row, column);
+                listToken.add(token);
+
+            }
+        }
+        
+    
+    
+    private boolean recognizeSeparators(String buffer, int column, int row){
+        String secondBuffer = "";
+        String valBuf = "";
+        char arr[] = buffer.toCharArray(); 
+        boolean val = false; 
+        
+        for(int i = 0; i < buffer.length(); i++){
+            valBuf = String.valueOf(arr[i]);
+            
+            
+            //verificar si es un separador
+            if(dictionary.containsKey(valBuf)){
+                val = true; 
+                if(i == 0){ //crear solo ese token 
+                    createToken(secondBuffer, i, column, false);
+                    secondBuffer = "";
+                }else{ //crear ese token y el anterior del buff
+                  
+                    column = column + i - secondBuffer.length(); 
+                    createToken(secondBuffer, row, column, false);
+                    createToken(valBuf, row, column + 1, false);
+                    secondBuffer = "";
+                    
+                }
+            }else{
+                secondBuffer += arr[i]; 
+               if(i == buffer.length()- 1 && val){
+                        createToken(secondBuffer, row, column+1, false);
+                } 
+            }
             
         }
         
+        return val; 
     }
 
     /**

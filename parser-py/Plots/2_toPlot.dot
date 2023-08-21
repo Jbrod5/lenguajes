@@ -1,7 +1,6 @@
 digraph Plot{
    rankdir = LR;
-   label = "IDENTIFIER: es";
-    n0[style = filled, color = yellow, label = "e"];
-    n1[style = filled, color = yellow, label = "s" ,shape = doublecircle];
+   label = "OPERADOR: ARITHMETIC: +";
+    n0[style = filled, color = blue, label = "+" ,shape = doublecircle];
     n0 -> n1;
 }
