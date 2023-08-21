@@ -1,19 +1,15 @@
 digraph Plot{
    rankdir = LR;
-   label = "IDENTIFIER: jlkfdskljdfsa";
-    n0[style = filled, color = yellow, label = "j"];
-    n1[style = filled, color = yellow, label = "l"];
-    n2[style = filled, color = yellow, label = "k"];
-    n3[style = filled, color = yellow, label = "f"];
-    n4[style = filled, color = yellow, label = "d"];
-    n5[style = filled, color = yellow, label = "s"];
-    n6[style = filled, color = yellow, label = "k"];
-    n7[style = filled, color = yellow, label = "l"];
-    n8[style = filled, color = yellow, label = "j"];
-    n9[style = filled, color = yellow, label = "d"];
-    n10[style = filled, color = yellow, label = "f"];
-    n11[style = filled, color = yellow, label = "s"];
-    n12[style = filled, color = yellow, label = "a" ,shape = doublecircle];
+   label = "LEXICAL_ERROR_unknow_lexeme: cadena;as";
+    n0[style = filled, color = orange, label = "c"];
+    n1[style = filled, color = orange, label = "a"];
+    n2[style = filled, color = orange, label = "d"];
+    n3[style = filled, color = orange, label = "e"];
+    n4[style = filled, color = orange, label = "n"];
+    n5[style = filled, color = orange, label = "a"];
+    n6[style = filled, color = orange, label = ";"];
+    n7[style = filled, color = orange, label = "a"];
+    n8[style = filled, color = orange, label = "s" ,shape = doublecircle];
     n0 -> n1;
     n1 -> n2;
     n2 -> n3;
@@ -22,8 +18,4 @@ digraph Plot{
     n5 -> n6;
     n6 -> n7;
     n7 -> n8;
-    n8 -> n9;
-    n9 -> n10;
-    n10 -> n11;
-    n11 -> n12;
 }

@@ -2,6 +2,7 @@
 package com.jbrod.parserpy.ui;
 
 import com.jbrod.parserpy.app.analizer.MainClass;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -21,6 +22,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
         initComponents();
         setVisible(true);
         setLocationRelativeTo(null);
+        setTitle("Parser - py");
     }
 
     public void setMainClass(MainClass mainClass) {
@@ -46,6 +48,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
         tbdContent = new javax.swing.JTabbedPane();
         btnAnalize = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
+        btnOpenFile = new javax.swing.JButton();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -58,6 +61,13 @@ public class PrincipalFrame extends javax.swing.JFrame {
             }
         });
 
+        btnOpenFile.setText("Abrir archivo");
+        btnOpenFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOpenFileActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -67,8 +77,10 @@ public class PrincipalFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tbdContent)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnOpenFile)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAnalize)
-                        .addGap(0, 312, Short.MAX_VALUE)))
+                        .addGap(0, 374, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
@@ -79,11 +91,13 @@ public class PrincipalFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnAnalize)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAnalize)
+                    .addComponent(btnOpenFile))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tbdContent, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                .addComponent(tbdContent, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -93,6 +107,18 @@ public class PrincipalFrame extends javax.swing.JFrame {
     private void btnAnalizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizeActionPerformed
         mainClass.analize();
     }//GEN-LAST:event_btnAnalizeActionPerformed
+
+    private void btnOpenFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenFileActionPerformed
+        // TODO add your handling code here:
+        String path = ""; 
+        JFileChooser chooser = new JFileChooser(); 
+        setVisible(true);
+        chooser.showOpenDialog(chooser);
+        
+        path = chooser.getSelectedFile().getAbsolutePath();
+        
+        mainClass.openFile(path);
+    }//GEN-LAST:event_btnOpenFileActionPerformed
 
     /**
      * @param args the command line arguments
@@ -131,6 +157,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnalize;
+    private javax.swing.JButton btnOpenFile;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JTabbedPane tbdContent;

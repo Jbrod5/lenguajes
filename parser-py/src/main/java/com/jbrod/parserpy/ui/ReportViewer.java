@@ -33,7 +33,7 @@ public class ReportViewer extends javax.swing.JPanel {
     public void addReport(List<Token> lsToken){
        
         DefaultTableModel model = (DefaultTableModel) tblReport.getModel(); 
-        model.setColumnCount(5);
+        model.setColumnCount(5  );
         model.setRowCount(lsToken.size());
         //Tabla: Token | Patron | Lexema | Linea | Columna
         

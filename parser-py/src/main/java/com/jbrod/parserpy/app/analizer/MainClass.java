@@ -1,6 +1,7 @@
 
 package com.jbrod.parserpy.app.analizer;
 
+import com.jbrod.parserpy.app.FileReader;
 import com.jbrod.parserpy.app.analizer.lexicon.Analizer;
 import com.jbrod.parserpy.app.analizer.lexicon.Token;
 import com.jbrod.parserpy.app.analizer.lexicon.TokenPlotter;
@@ -90,6 +91,15 @@ public class MainClass {
         }*/
         
         
+        
+    }
+    
+    public void openFile(String path){
+        
+        FileReader fileReader = new FileReader(); 
+        
+        String read = fileReader.read(path);
+        textEditor.setText(read);
         
     }
     

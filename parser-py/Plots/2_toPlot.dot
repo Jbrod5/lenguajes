@@ -1,6 +1,19 @@
 digraph Plot{
    rankdir = LR;
-   label = "OPERADOR: ARITHMETIC: *";
-    n0[style = filled, color = blue, label = "*" ,shape = doublecircle];
+   label = "CONSTANT: "cadena"";
+    n0[style = filled, color = red, label = """];
+    n1[style = filled, color = red, label = "c"];
+    n2[style = filled, color = red, label = "a"];
+    n3[style = filled, color = red, label = "d"];
+    n4[style = filled, color = red, label = "e"];
+    n5[style = filled, color = red, label = "n"];
+    n6[style = filled, color = red, label = "a"];
+    n7[style = filled, color = red, label = """ ,shape = doublecircle];
     n0 -> n1;
+    n1 -> n2;
+    n2 -> n3;
+    n3 -> n4;
+    n4 -> n5;
+    n5 -> n6;
+    n6 -> n7;
 }

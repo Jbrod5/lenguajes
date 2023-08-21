@@ -5,6 +5,7 @@
 package com.jbrod.parserpy.ui;
 
 import com.jbrod.parserpy.app.analizer.MainClass;
+import javax.swing.text.DefaultStyledDocument;
 import javax.swing.text.StyledEditorKit;
 
 /**
@@ -20,7 +21,6 @@ public class TextEditor extends javax.swing.JPanel {
      */
     public TextEditor() {
         initComponents();
-        editorPane.setEditorKit(new StyledEditorKit());
 
     }
 
@@ -29,7 +29,7 @@ public class TextEditor extends javax.swing.JPanel {
     }
     
     public String getInputToAnalize(){
-        return editorPane.getText();
+        return textPaneCode.getText();
     }
 
     /**
@@ -39,10 +39,10 @@ public class TextEditor extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        scrlContent = new javax.swing.JScrollPane();
-        editorPane = new javax.swing.JEditorPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textPaneCode = new javax.swing.JTextPane();
 
-        scrlContent.setViewportView(editorPane);
+        jScrollPane1.setViewportView(textPaneCode);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -50,21 +50,25 @@ public class TextEditor extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scrlContent, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scrlContent, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JEditorPane editorPane;
-    private javax.swing.JScrollPane scrlContent;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextPane textPaneCode;
     // End of variables declaration//GEN-END:variables
+
+    public void setText(String read) {
+       textPaneCode.setText(read);
+    }
 }
