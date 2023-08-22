@@ -115,26 +115,21 @@ public class TokenPlotter {
     }
     
     public void removeAllPlots(){
-        /*
-        ProcessBuilder pb = new ProcessBuilder("rmdir", "/s", "/q", "./Plots/");
-        try {
-            System.out.println(pb.command());
-            pb.start();
-        } catch (IOException ex) {
-            Logger.getLogger(TokenPlotter.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
-        
-        
      
         File file = new File("Plots/");
+        if(!file.exists()){
+            file.mkdir(); 
+        }
+        
+        File archivos[] = file.listFiles(); 
         
         try {
-            file.delete();
+            for (int i = 0; i < archivos.length; i++) {
+                archivos[i].delete();
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        
-        file.mkdir(); 
         
     }
     

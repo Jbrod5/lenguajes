@@ -11,4 +11,23 @@
         <maven.compiler.target>17</maven.compiler.target>
         <exec.mainClass>com.jbrod.parserpy.Parserpy</exec.mainClass>
     </properties>
+    
+    <build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>2.4</version>
+            <configuration>
+                <archive>
+                    <manifest>
+                        <addClasspath>true</addClasspath>
+                        <mainClass>com.jbrod.parserpy.Parserpy</mainClass>
+                    </manifest>
+                </archive>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+    
 </project>
