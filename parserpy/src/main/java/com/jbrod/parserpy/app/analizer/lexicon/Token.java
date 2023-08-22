@@ -76,18 +76,18 @@ public class Token {
         //Estilo comun para TODOS los nodos del token
         String style = "style=\"    width: 50px; background-color:" + color + "; border: 2px solid black; margin: 2px; border-radius: 100%; display: inline-block; padding: 10px;\"";
         
-        //Cabecera: div del token 
-        graph += " <div style=\" display: flex; flex-wrap: wrap; border: 2px solid black;margin:4px; text-align: center;\">"
+        //Cabecera: div del token   | display: grid, flex-wrap: wrap; display: grid;
+        graph += " <div style=\"   border: 2px solid black;margin:4px; text-align: center;\">"
                 + "<h1>" + tokenType + ": " + lexeme + "</h1>"; 
         
         //crear div de cada parte del lexema
         for (int i = 0; i < lexeme.length(); i++) {
             //verificar si no es el final 
             if(i < lexeme.length() - 1){
-                graph += "<div " + style + "> " + lexeme.charAt(i) + "</div> &rarr;";
+                graph += "<div " + style + "> " + lexeme.charAt(i) + "</div> <div style= \"display:inline-block;\">&rarr;</div>";
             }else{
-                //display: inline-block; 
-                graph += "<div style=\"display: flex; width: 60px;border: 2px solid black; margin: 2px; border-radius: 20px ; width: auto; display: inline-block; padding: 10px\">";
+                //display: inline-block; display: flex; 
+                graph += "<div style=\" display: inline-block; width: 80px; border: 2px solid black; margin: 2px; border-radius: 20px ;  padding: 10px\">";
                 graph += "<div " + style + "> " + lexeme.charAt(i) + "</div>";
                 graph += "</div>";
             }

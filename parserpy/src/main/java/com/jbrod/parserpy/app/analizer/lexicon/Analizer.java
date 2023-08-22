@@ -107,14 +107,17 @@ public class Analizer {
                             createToken(buffer, rows, tokenColumn, text);
                             //tokenColumn = -1;
                             comment = false;
+                            //buffer = "";
+                        }else{
+                            createToken(buffer, rows, columns, text);
                         }
-                         
+                        buffer = "";
                     }else{  
                         buffer = buffer + c; 
                     }
                     rows ++;
                     
-                    textEditor.addText("\n", -1);
+                    textEditor.addText(String.valueOf(c), -1);
                     break; 
                     
                 case '#':
@@ -148,7 +151,7 @@ public class Analizer {
         String pattern = "";
         boolean validate = false; 
         
-        if(!buffer.isBlank()){
+        if(!buffer.isBlank() && !buffer.isEmpty()){
             
             if(dictionary.containsKey(buffer)){ //token contenido en el diccionario
                 
@@ -189,7 +192,9 @@ public class Analizer {
                 textEditor.addText(buffer, tokenType);
                 
                 Token token = new Token(tokenType, pattern, buffer, row, column);
-                listToken.add(token);
+                if(token.getLexeme().length()>0){
+                    listToken.add(token);
+                }
                 
                 
 

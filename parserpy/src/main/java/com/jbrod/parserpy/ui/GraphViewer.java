@@ -31,13 +31,13 @@ public class GraphViewer extends javax.swing.JPanel {
      */
     public GraphViewer() {
         initComponents();
-       pnlito.setVisible(true);
+       //pnlito.setVisible(true);
        
         for (int i = 0; i < 10; i++) {
            // pnlito.add(new JButton());
             
         }
-        remove(pnlito);
+        //remove(pnlito);
         remove(jScrollPane1);
       edpnGraph.setContentType("text/html");
       
@@ -49,11 +49,12 @@ public class GraphViewer extends javax.swing.JPanel {
     }
     
     public void addGraphs(Token[] arr){
+        /*
         pnlito.removeAll();
         pnlito.repaint();
         pnlito.updateUI();
         pnlito.repaint();
-        
+        */
         TokenPlotter tp = new TokenPlotter();
         for (Token token : arr) {
             try {
@@ -68,7 +69,7 @@ public class GraphViewer extends javax.swing.JPanel {
                         ImageIcon ic = new ImageIcon(token.getTokenType()+".png");
                         JButton graph = new JButton("", ic);
                         //JLabel graph = new JLabel(ic);
-                        pnlito.add(graph);
+                        //pnlito.add(graph);
                         System.out.println("grafo aniadido");
                         f.delete();
                     }
@@ -89,6 +90,7 @@ public class GraphViewer extends javax.swing.JPanel {
     }
     
     public void addGraphsHtml(String text){
+        text.replaceAll("&rarr;", "&darr;");
         edpnGraph.setText(text);
     }
     public void clearGraphs(){
@@ -114,14 +116,14 @@ public class GraphViewer extends javax.swing.JPanel {
         pnl.repaint();
         */
         //pnlito.removeAll();
-        pnlito.repaint();
+        //pnlito.repaint();
         
         ImageIcon ic = new ImageIcon(graphPath);
         JButton graph = new JButton("", ic);
         //JLabel graph = new JLabel(ic);
-        pnlito.add(graph);
+        /*pnlito.add(graph);
         pnlito.updateUI();
-        pnlito.repaint();
+        pnlito.repaint();*/
         
         System.out.println("grafo aniadido");
         
@@ -136,13 +138,8 @@ public class GraphViewer extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        scrl = new javax.swing.JScrollPane();
-        pnlito = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         edpnGraph = new javax.swing.JEditorPane();
-
-        pnlito.setLayout(new java.awt.GridLayout(0, 4));
-        scrl.setViewportView(pnlito);
 
         jScrollPane1.setViewportView(edpnGraph);
         edpnGraph.getAccessibleContext().setAccessibleDescription("text/html");
@@ -151,20 +148,16 @@ public class GraphViewer extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scrl, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1)
-                    .addComponent(scrl, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -173,7 +166,5 @@ public class GraphViewer extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JEditorPane edpnGraph;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPanel pnlito;
-    private javax.swing.JScrollPane scrl;
     // End of variables declaration//GEN-END:variables
 }
