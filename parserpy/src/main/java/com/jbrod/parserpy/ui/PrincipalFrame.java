@@ -2,6 +2,8 @@
 package com.jbrod.parserpy.ui;
 
 import com.jbrod.parserpy.app.analizer.MainClasss;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -23,6 +25,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
         setVisible(true);
         setLocationRelativeTo(null);
         setTitle("Parser - py");
+        setIconImage(new ImageIcon(getClass().getResource("/icon.png")).getImage());
     }
 
     public void setMainClass(MainClasss mainClass) {
