@@ -17,7 +17,7 @@ public class Test {
     
     
         public static void main(String[] args) {
-        MainClass mainClass = new MainClass();
+        MainClasss mainClass = new MainClasss();
         mainClass.assignRel();
         }
     /*public static void main(String[] args) {

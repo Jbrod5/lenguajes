@@ -4,7 +4,7 @@
  */
 package com.jbrod.parserpy.ui;
 
-import com.jbrod.parserpy.app.analizer.MainClass;
+import com.jbrod.parserpy.app.analizer.MainClasss;
 import com.jbrod.parserpy.app.analizer.lexicon.Token;
 import com.jbrod.parserpy.app.analizer.lexicon.TokenPlotter;
 import java.awt.GridLayout;
@@ -24,7 +24,7 @@ import javax.swing.JPanel;
  */
 public class GraphViewer extends javax.swing.JPanel {
 
-    private MainClass mainClass; 
+    private MainClasss mainClass; 
     
     /**
      * Creates new form GraphViewer
@@ -44,7 +44,7 @@ public class GraphViewer extends javax.swing.JPanel {
       edpnGraph.setText("<h1> Los grafos generados se interpretaran aqui </h1>");
     }
 
-    public void setMainClass(MainClass mainClass) {
+    public void setMainClass(MainClasss mainClass) {
         this.mainClass = mainClass;
     }
     

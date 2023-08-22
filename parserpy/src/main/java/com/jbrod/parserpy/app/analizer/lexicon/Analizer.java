@@ -2,6 +2,7 @@
 package com.jbrod.parserpy.app.analizer.lexicon;
 
 import com.jbrod.parserpy.app.FileGenerator;
+import com.jbrod.parserpy.ui.TextEditor;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +22,8 @@ public class Analizer {
     private NumberValidator numValidator;  
     
     private String report; 
+    
+    private TextEditor textEditor; 
 
     public Analizer() {
         
@@ -32,6 +35,12 @@ public class Analizer {
         numValidator = new NumberValidator(); 
         
     }
+
+    public void setTextEditor(TextEditor textEditor) {
+        this.textEditor = textEditor;
+    }
+    
+    
     
     /**
      * Lee la cadena de entrada caracter por caracter y determina coincidencias con el TokenDictionary.
@@ -69,6 +78,7 @@ public class Analizer {
                     }else{
                         buffer = buffer + c; 
                     }
+                    textEditor.addText(" ", -1);
                     break;
                     
                     
@@ -101,6 +111,8 @@ public class Analizer {
                         buffer = buffer + c; 
                     }
                     rows ++;
+                    
+                    textEditor.addText("\n", -1);
                     break; 
                     
                 case '#':
@@ -172,10 +184,15 @@ public class Analizer {
 
             if(!validate){
                 
+                textEditor.addText(buffer, tokenType);
+                
                 Token token = new Token(tokenType, pattern, buffer, row, column);
                 listToken.add(token);
+                
+                
 
             }
+            
         }
         
     

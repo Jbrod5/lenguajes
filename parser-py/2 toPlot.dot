@@ -1,6 +1,0 @@
-digraph Plot{
-   rankdir = LR;
-   label = "CONSTANT: 5";
-    n0[style = filled, color = red, label = "5" ,shape = doublecircle];
-    n0 -> n1;
-}

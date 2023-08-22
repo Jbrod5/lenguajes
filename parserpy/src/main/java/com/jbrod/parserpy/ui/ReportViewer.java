@@ -4,7 +4,7 @@
  */
 package com.jbrod.parserpy.ui;
 
-import com.jbrod.parserpy.app.analizer.MainClass;
+import com.jbrod.parserpy.app.analizer.MainClasss;
 import com.jbrod.parserpy.app.analizer.lexicon.Token;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ReportViewer extends javax.swing.JPanel {
 
-    private MainClass mainClass; 
+    private MainClasss mainClass; 
     private DefaultTableModel tbModel; 
     
     /**
@@ -26,7 +26,7 @@ public class ReportViewer extends javax.swing.JPanel {
         tbModel = (DefaultTableModel)tblReport.getModel();
     }
 
-    public void setMainClass(MainClass mainClass) {
+    public void setMainClass(MainClasss mainClass) {
         this.mainClass = mainClass;
     }
     

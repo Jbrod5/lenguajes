@@ -15,7 +15,7 @@ import java.util.List;
  * Clase principal.
  * @author Jorge
  */
-public class MainClass {
+public class MainClasss {
 
     //Elementos graficos
     private TextEditor textEditor; 
@@ -27,7 +27,7 @@ public class MainClass {
     //Analizador
     private Analizer lexiconAnalizer;
     
-    public MainClass(){
+    public MainClasss(){
         principalFrame  = new PrincipalFrame(); 
         
         textEditor      = new TextEditor    (); 
@@ -47,12 +47,16 @@ public class MainClass {
         principalFrame.addPanel(textEditor, "Editor de texto");
         principalFrame.addPanel(graphViewer, "Visor de grafos");
         principalFrame.addPanel(reportViewer, "Visor de reportes");
+        
+        lexiconAnalizer.setTextEditor(textEditor);
     }
     
     public void analize(){
+        /*
         textEditor.addText("pelos", 1);
         textEditor.addText(" en ", -1);
         textEditor.addText("lacola", 3);
+        */
         
         String inputToAnalize; 
         inputToAnalize = textEditor.getInputToAnalize();

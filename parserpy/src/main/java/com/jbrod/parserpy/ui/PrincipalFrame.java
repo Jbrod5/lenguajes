@@ -1,7 +1,7 @@
 
 package com.jbrod.parserpy.ui;
 
-import com.jbrod.parserpy.app.analizer.MainClass;
+import com.jbrod.parserpy.app.analizer.MainClasss;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -16,7 +16,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
      * Creates new form PrincipalFrame
      */
     
-    private MainClass mainClass; 
+    private MainClasss mainClass; 
     
     public PrincipalFrame() {
         initComponents();
@@ -25,7 +25,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
         setTitle("Parser - py");
     }
 
-    public void setMainClass(MainClass mainClass) {
+    public void setMainClass(MainClasss mainClass) {
         this.mainClass = mainClass;
     }
 
