@@ -60,6 +60,10 @@ public class TextEditor extends javax.swing.JPanel {
         
     }
     
+    public void clearText(){
+        textPaneCode.setText("");
+    }
+    
     /**
      * Agrega un texto indicado al text editor en base a un color.
      * @param text: texto a insertar.

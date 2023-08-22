@@ -52,6 +52,7 @@ public class Analizer {
     public void searchMatches(String textInput){
 
         listToken.clear();
+        textEditor.clearText();
         textInput += " \n\r";
         char[] input = textInput.toCharArray();
         int rows = 0; 
@@ -78,6 +79,7 @@ public class Analizer {
                     }else{
                         buffer = buffer + c; 
                     }
+                    
                     textEditor.addText(" ", -1);
                     break;
                     
@@ -213,6 +215,7 @@ public class Analizer {
                 if(i == 0){ //crear solo ese token 
                     createToken(secondBuffer, i, column, false);
                     secondBuffer = "";
+                    
                 }else{ //crear ese token y el anterior del buff
                   
                     column = column + i - secondBuffer.length(); 
