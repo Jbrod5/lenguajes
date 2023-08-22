@@ -1,4 +1,4 @@
 Token,Patron,Lexema,Linea,Columna
-IDENTIFIER,[ a-z | A-Z | _ ]+ [ a-z | A-Z | 0-9 | _ ]*,puto,1,1,
-IDENTIFIER,[ a-z | A-Z | _ ]+ [ a-z | A-Z | 0-9 | _ ]*,el,1,6,
-IDENTIFIER,[ a-z | A-Z | _ ]+ [ a-z | A-Z | 0-9 | _ ]*,pile,2,9,
+IDENTIFIER,[ a-z | A-Z | _ ]+ [ a-z | A-Z | 0-9 | _ ]*,pelos,1,1,
+IDENTIFIER,[ a-z | A-Z | _ ]+ [ a-z | A-Z | 0-9 | _ ]*,en,1,7,
+IDENTIFIER,[ a-z | A-Z | _ ]+ [ a-z | A-Z | 0-9 | _ ]*,lacola,1,10,

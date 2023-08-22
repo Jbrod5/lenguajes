@@ -5,7 +5,15 @@
 package com.jbrod.parserpy.ui;
 
 import com.jbrod.parserpy.app.analizer.MainClass;
+import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultStyledDocument;
+import javax.swing.text.Style;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyleContext;
+import javax.swing.text.StyledDocument;
 import javax.swing.text.StyledEditorKit;
 
 /**
@@ -16,14 +24,68 @@ public class TextEditor extends javax.swing.JPanel {
 
     private MainClass mainClass; 
     
+    //para estilos
+    private StyledDocument styledDocument;
+    
+    Style defaultStyle, blueStyle, purpleStyle, redStyle, greyStyle, greenStyle, orangeStyle; 
+    
+    
+    
     /**
      * Creates new form TextEditor
      */
     public TextEditor() {
         initComponents();
-
+        styledDocument = textPaneCode.getStyledDocument();
+        defaultStyle = StyleContext.getDefaultStyleContext().getStyle(StyleContext.DEFAULT_STYLE);
+        
+        blueStyle = styledDocument.addStyle("Blue", defaultStyle);
+        StyleConstants.setForeground(blueStyle, Color.BLUE);
+        
+        purpleStyle = styledDocument.addStyle("Purple", defaultStyle);
+        StyleConstants.setForeground(purpleStyle, Color.MAGENTA);
+        
+        redStyle = styledDocument.addStyle("Red", defaultStyle);
+        StyleConstants.setForeground(redStyle, Color.RED);
+        
+        greyStyle = styledDocument.addStyle("Grey", defaultStyle);
+        StyleConstants.setForeground(greyStyle, Color.GRAY);
+        
+        greenStyle = styledDocument.addStyle("Green", defaultStyle);
+        StyleConstants.setForeground(greenStyle, Color.GREEN);
+        
+        orangeStyle = styledDocument.addStyle("Orange", defaultStyle);
+        StyleConstants.setForeground(orangeStyle, Color.ORANGE);
+        
+    }
+    
+    /**
+     * Agrega un texto indicado al text editor en base a un color.
+     * @param text: texto a insertar.
+     * @param color: 1. normal | 2. Azul | 3. Morado | 4. Rojo | 5. Gris | 6. Verde | def Naranja
+     **/
+    public void addText(String text, int color){
+        Style toUse = switch (color) {
+            case  1 -> defaultStyle ;
+            case  2 -> blueStyle    ;
+            case  3 -> purpleStyle  ; 
+            case  4 -> redStyle     ;
+            case  5 -> greyStyle    ; 
+            case  6 -> greenStyle   ; 
+            default -> orangeStyle  ;
+        };
+        try {
+            styledDocument.insertString(styledDocument.getLength(),text, toUse);
+        } catch (BadLocationException ex) {
+            ex.printStackTrace();
+        }
     }
 
+    public StyledDocument getStyledDocument(){
+        StyledDocument doc =  textPaneCode.getStyledDocument();
+        return doc; 
+    }
+    
     public void setMainClass(MainClass mainClass) {
         this.mainClass = mainClass;
     }

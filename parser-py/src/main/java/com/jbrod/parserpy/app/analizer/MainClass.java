@@ -50,6 +50,10 @@ public class MainClass {
     }
     
     public void analize(){
+        textEditor.addText("pelos", 1);
+        textEditor.addText(" en ", -1);
+        textEditor.addText("lacola", 3);
+        
         String inputToAnalize; 
         inputToAnalize = textEditor.getInputToAnalize();
         
