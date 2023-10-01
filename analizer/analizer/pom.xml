@@ -11,6 +11,16 @@
         <maven.compiler.target>17</maven.compiler.target>
         <exec.mainClass>com.jbrod.analizer.Analizer</exec.mainClass>
     </properties>
+
+        <dependencies>
+            <!-- https://mvnrepository.com/artifact/de.jflex/jflex -->
+            <dependency>
+                <groupId>de.jflex</groupId>
+                <artifactId>jflex</artifactId>
+                <version>1.9.1</version>
+            </dependency>
+
+        </dependencies>
     
      <build>
         <plugins>
@@ -22,12 +32,28 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>analizer.Analizer</mainClass>
+                            <mainClass>com.jbrod.analizer.Analizer</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
             </plugin>
+            
+            <plugin>
+                <groupId>de.jflex</groupId>
+                <artifactId>jflex-maven-plugin</artifactId>
+                <version>1.9.1</version>
+                <executions>
+                  <execution>
+                    <goals>
+                      <goal>generate</goal>
+                    </goals>
+                  </execution>
+                </executions>
+              </plugin>
+            
+            
         </plugins>
+        
     </build>
     
 </project>
