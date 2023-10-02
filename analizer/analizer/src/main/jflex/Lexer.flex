@@ -16,12 +16,17 @@ import  com.jbrod.analizer.lexer.Tokens.*;
 %type Token     
 
 /* MACROS - Expresiones regulares */
-L=[a-zA-Z_]+
-D=[0-9]+
-espacio=[ ,\t,\r,\n]+
-caddob=\".*\"
-cadsimp='.*'
-comment=#.*
+
+L=[a-zA-Z_]+                //letras
+D=[0-9]+                    //Digitos
+espacio=[ ,\t,\r]+ 
+eol=[\n]                    //Fin de linea
+
+caddob=\".*\"               //Cadena con comillas dobles
+cadsimp='.*'                //Cadena con comillas simples
+comment=#.*                 //Comentario
+
+
 /*comment=#.[a-zA-Z0-9.,/-+@"*'!#$%&()=?_:;><]\n*/
 
 %{
@@ -35,8 +40,6 @@ comment=#.*
 /* ------------------------------------------------------ Reglas lexicas --------------------------------------------------------- */
 /* new Token(tipo, lexema, patron, fila, columna) */
 
-/*  Identificadores  ->  [a-zA-Z_][a-zA-Z0-9_]*    */
-{L}({L}|{D})* {return new Token(Tokens.IDENTIFIER, yytext(), "[a-zA-Z_][a-zA-Z0-9_]*", yyline, yycolumn);}
 
 /* Aritmeticos */
 "+"  |
@@ -71,7 +74,9 @@ comment=#.*
 "*="  {return new Token(Tokens.ASSIGNAMENT, yytext(), yytext(), yyline, yycolumn);}
 
 /* Palabras clave */
-"and"       |
+// "and"      | Estas palabras se categorizan como logicos
+//"not"       |
+//"or"        |
 "as"        |
 "assert"    |
 "break"     |
@@ -94,8 +99,6 @@ comment=#.*
 "lambda"    |
 "None"      |
 "nonlocal"  | 
-"not"       |
-"or"        |
 "pass"      |
 "raise"     |
 "return"    |
@@ -113,6 +116,10 @@ comment=#.*
 "true"      |
 "false"     {return new Token(Tokens.CONSTANT, yytext(), yytext(), yyline, yycolumn);}
 
+/*  Identificadores  ->  [a-zA-Z_][a-zA-Z0-9_]*    */
+{L}({L}|{D})* {return new Token(Tokens.IDENTIFIER, yytext(), "[a-zA-Z_][a-zA-Z0-9_]*", yyline, yycolumn);}
+
+
 /* Comentario */
 {comment} {return new Token(Tokens.COMMENT, yytext(), yytext(), yyline, yycolumn);}
 
@@ -127,7 +134,11 @@ comment=#.*
 ";" |
 ":" {return new Token(Tokens.OTHERS, yytext(), yytext(), yyline, yycolumn);}
 
-{espacio} { /* ignorar */ }
+/* Fin de linea*/
+{eol} {return new Token(Tokens.EOL, yytext(), "\n", yyline, yycolumn);}
+
+/* Espacio */
+{espacio} { /* ignorar por ahora*/ }
 
 . {return new Token(Tokens.LEXICAL_ERROR_unknow_lexeme, yytext(), yytext(), yyline, yycolumn);}
 
