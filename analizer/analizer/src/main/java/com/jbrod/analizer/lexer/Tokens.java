@@ -6,7 +6,6 @@ package com.jbrod.analizer.lexer;
  * @author Jorge
  */
 public enum Tokens {
-    Reservadas, Igual, Suma, Resta, Multiplicacion, Division, Identificador, Numero, ERROR,
     
     IDENTIFIER,
     ARITHMETIC, 
@@ -17,6 +16,8 @@ public enum Tokens {
     CONSTANT, 
     COMMENT,
     OTHERS, 
+    
+    EOL, //fin de linea
     LEXICAL_ERROR_unknow_lexeme
 
 }
