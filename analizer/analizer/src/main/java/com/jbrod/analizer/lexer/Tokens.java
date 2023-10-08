@@ -17,6 +17,7 @@ public enum Tokens {
     COMMENT,
     OTHERS, 
     
+    SPACE,
     EOL, //fin de linea
     LEXICAL_ERROR_unknow_lexeme
 
