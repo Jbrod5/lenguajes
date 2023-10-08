@@ -1,4 +1,4 @@
-/* Generar lexer: pom -> de.jflex:jflex-maven-plugin:1.9.1:generate */
+/* Generar lexer: pom -> de.jflex:jflex-maven-plugin:1.9.1:generate -X  */
 
 /* -------------------- Codigo de usuario  --------------------------------- -  se copia integramente en la clase  -----------------*/
 package com.jbrod.analizer.lexer;
@@ -10,27 +10,31 @@ import  com.jbrod.analizer.lexer.Tokens.*;
 /* ------------------------------------------------ Opciones y declaraciones -------------------------------------------------- */
 
 /*nombre*/
-%class Lexer 
+%class Tokenizer  
 
 /* genera tipo de dato Token */   
 %type Token     
 
 /* MACROS - Expresiones regulares */
 
+//L=[a-zA-Z_]+              //letras
 L=[a-zA-Z_]+                //letras
+
 D=[0-9]+                    //Digitos
-espacio=[ ,\t,\r]+ 
+
+espacio=[ ]
+//espacio=[ ,\t,\r]+ 
+
 eol=[\n]                    //Fin de linea
 
 caddob=\".*\"               //Cadena con comillas dobles
 cadsimp='.*'                //Cadena con comillas simples
+
 comment=#.*                 //Comentario
-
-
 /*comment=#.[a-zA-Z0-9.,/-+@"*'!#$%&()=?_:;><]\n*/
 
 %{
-    public String lexeme;
+    public Token token;
 %}
 
 
@@ -41,6 +45,23 @@ comment=#.*                 //Comentario
 /* new Token(tipo, lexema, patron, fila, columna) */
 
 
+/* Otros */
+"(" |
+")" |
+"{" |
+"}" |
+"[" |
+"]" |
+"," |
+";" |
+":" {        return new Token(Tokens.OTHERS, yytext(), yytext(), yyline, yycolumn); }
+
+/* Fin de linea*/
+{eol} { return new Token(Tokens.EOL, yytext(), "\n", yyline, yycolumn); }
+
+/* Espacio */
+{espacio} { return new Token(Tokens.SPACE, yytext(), "\n", yyline, yycolumn); }
+
 /* Aritmeticos */
 "+"  |
 "-"  |
@@ -48,7 +69,7 @@ comment=#.*                 //Comentario
 "/"  |
 "//" |
 "%"  | 
-"*"  {return new Token(Tokens.ARITHMETIC, yytext(), yytext(), yyline, yycolumn);}
+"*"  { return new Token(Tokens.ARITHMETIC, yytext(), yytext(), yyline, yycolumn); }
 
 /* Comparacion */
 "==" | 
@@ -56,12 +77,12 @@ comment=#.*                 //Comentario
 ">"  |
 "<"  |
 ">=" |
-"<=" {return new Token(Tokens.COMPARISION, yytext(), yytext(), yyline, yycolumn);}
+"<=" { return new Token(Tokens.COMPARISION, yytext(), yytext(), yyline, yycolumn); }
 
 /* Logicos */
 "and" |
 "or"  |
-"not" {return new Token(Tokens.LOGICAL, yytext(), yytext(), yyline, yycolumn);}
+"not" { return new Token(Tokens.LOGICAL, yytext(), yytext(), yyline, yycolumn); }
 
 /* Asignacion - posible combinacion aritmeticos */
 "="   |
@@ -71,12 +92,9 @@ comment=#.*                 //Comentario
 "/="  |
 "//=" |
 "%="  | 
-"*="  {return new Token(Tokens.ASSIGNAMENT, yytext(), yytext(), yyline, yycolumn);}
+"*="  { return new Token(Tokens.ASSIGNAMENT, yytext(), yytext(), yyline, yycolumn); }
 
 /* Palabras clave */
-// "and"      | Estas palabras se categorizan como logicos
-//"not"       |
-//"or"        |
 "as"        |
 "assert"    |
 "break"     |
@@ -106,39 +124,22 @@ comment=#.*                 //Comentario
 "try"       |
 "while"     |
 "with"      |
-"yield"     {return new Token(Tokens.KEYWORD, yytext(), yytext(), yyline, yycolumn);}
+"yield"     { return new Token(Tokens.KEYWORD, yytext(), yytext(), yyline, yycolumn); }
 
-/* Constantes */
+/* Constantes  ------- */
 {D}+ |
 {D}+"."{D}+ |
 {caddob}    |
 {cadsimp}   |
 "true"      |
-"false"     {return new Token(Tokens.CONSTANT, yytext(), yytext(), yyline, yycolumn);}
+"false"     { return new Token(Tokens.CONSTANT, yytext(), yytext(), yyline, yycolumn); }
 
 /*  Identificadores  ->  [a-zA-Z_][a-zA-Z0-9_]*    */
-{L}({L}|{D})* {return new Token(Tokens.IDENTIFIER, yytext(), "[a-zA-Z_][a-zA-Z0-9_]*", yyline, yycolumn);}
+{L}({L}|{D})* { return new Token(Tokens.IDENTIFIER, yytext(), "[a-zA-Z_][a-zA-Z0-9_]*", yyline, yycolumn); } 
 
 
 /* Comentario */
-{comment} {return new Token(Tokens.COMMENT, yytext(), yytext(), yyline, yycolumn);}
+{comment} { return new Token(Tokens.COMMENT, yytext(), yytext(), yyline, yycolumn); }
 
-/* Otros */
-"(" |
-")" |
-"{" |
-"}" |
-"[" |
-"]" |
-"," |
-";" |
-":" {return new Token(Tokens.OTHERS, yytext(), yytext(), yyline, yycolumn);}
-
-/* Fin de linea*/
-{eol} {return new Token(Tokens.EOL, yytext(), "\n", yyline, yycolumn);}
-
-/* Espacio */
-{espacio} { /* ignorar por ahora*/ }
-
-. {return new Token(Tokens.LEXICAL_ERROR_unknow_lexeme, yytext(), yytext(), yyline, yycolumn);}
+ . { return new Token(Tokens.LEXICAL_ERROR_unknow_lexeme, yytext(), yytext(), yyline, yycolumn); } 
 

@@ -1,7 +1,9 @@
 
 package com.jbrod.analizer.lexer;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
@@ -15,10 +17,10 @@ import jflex.anttask.JFlexTask;
  */
 public class Lexergen {
 
-    public static void main(String[] args) {
-        String flex = "C:/Users/Jorge/OneDrive/Documents/NetBeansProjects/Lenguajes/parser-py/analizer/analizer/src/main/java/com/jbrod/analizer/lexer/Lexer.flex";
-        /*
-        String test = "def if \"cadena \" : ( 4 + 5 )\n" +
+    public static void main(String[] args) throws IOException {
+        //String flex = "C:/Users/Jorge/OneDrive/Documents/NetBeansProjects/Lenguajes/parser-py/analizer/analizer/src/main/java/com/jbrod/analizer/lexer/Lexer.flex";
+        
+        String test = "def if + \"cadena \" : ( 4 + 5 )\n" +
                         "mi_id_\n" +
                         "#comentario \n" +
                         "while\n" +
@@ -29,25 +31,57 @@ public class Lexergen {
                         "\n" +
                         "#un error se puede presentar como la siguiente linea\n" +
                         "\n" +
-                        "\" mi cadena que no cierra";*/
+                        "\" mi cadena que no cierra";
         
-        String test = "id";
+        String ruta = "";
         
         Reader stringReader = new StringReader(test);
-        Lexer lexer = new Lexer(stringReader);
+        Tokenizer lexer = new Tokenizer(stringReader);
         
         Token token;
+       
         
-        try {
-            System.out.println("Todo bien: " + lexer.yylex());
-           token = lexer.yylex();
+        
+        //try {
+        
             
-        } catch (IOException ex) {
+            for (int i = 0; i < 15; i++) {
+                System.out.println("Todo bien: " +  " | n: " + i);
+                token = lexer.yylex();
+                System.out.println("Lex: " + token.getLexeme() + " | Type: " + token.getTokenType() + " |");
+                System.out.println("");
+            
+            }
+            
+            /*int i = 0; 
+            while(true){
+                i++;
+                System.out.println("Todo bien: " + lexer.yylex() + " | n: " + i);
+                token = lexer.yylex();
+                System.out.println("Lex: " + token.getLexeme() + " | Type: " + token.getTokenType() + " |");
+                System.out.println("");
+                if(token == null ){
+                    System.out.println("encontro nulo");
+                    break;
+                }
+            }*/
+            
+            
+           /* Reader rd = new BufferedReader(new FileReader(ruta));
+            Lexer lex = new Lexer(rd);
+            Token tk; 
+            while(true){
+                tk = lex.yylex();*/
+                
+            }
+            
+            
+        /*} catch (IOException ex) {
             Logger.getLogger(Lexergen.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Algo salio mal");
         }
         
         int kk = 4;
         
-    }
+    }*/
 }
