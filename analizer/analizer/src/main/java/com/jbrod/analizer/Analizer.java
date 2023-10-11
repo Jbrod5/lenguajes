@@ -35,20 +35,20 @@ public class Analizer{
     }
     
     private static void pruebaRange(String prueba) throws IOException{
-        Recurrentes r = new Recurrentes();
+        //Recurrentes r = new Recurrentes();
         Lexer lexer = new  Lexer();
         
         lexer.Analize(prueba);
-        System.out.println("Prueba rango: " + prueba + r.rango(lexer.getTokenList(), 0));
+        //System.out.println("Prueba rango: " + prueba + r.rango(lexer.getTokenList(), 0));
         
     }
     
     private static void pruebaArreglo(String prueba) throws IOException{
-        Recurrentes r = new Recurrentes();
+        //Recurrentes r = new Recurrentes();
         Lexer lexer = new Lexer(); 
         
         lexer.Analize(prueba);
-        System.out.println("Prueba Arreglo: " + prueba + r.array(lexer.getTokenList(), 0));
+        //System.out.println("Prueba Arreglo: " + prueba + r.array(lexer.getTokenList(), 0));
         
     }
 }
