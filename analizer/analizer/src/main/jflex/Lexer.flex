@@ -126,6 +126,11 @@ comment=#.*                 //Comentario
 "with"      |
 "yield"     { return new Token(Tokens.KEYWORD, yytext(), yytext(), yyline, yycolumn); }
 
+/* Integer ----------- */ 
+{D}+ {return new Token(Tokens.INTEGER, yytext(), yytext(), yyline, yycolumn);}
+
+/*  */
+
 /* Constantes  ------- */
 {D}+ |
 {D}+"."{D}+ |

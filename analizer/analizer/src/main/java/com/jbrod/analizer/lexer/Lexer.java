@@ -13,7 +13,7 @@ import java.util.List;
  * @author Jorge
  */
 public class Lexer {
-    List<Token> tokenList;
+    LinkedList<Token> tokenList;
     Tokenizer tokenizer; 
     
     public Lexer(){

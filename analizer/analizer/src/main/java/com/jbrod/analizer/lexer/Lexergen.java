@@ -1,6 +1,7 @@
 
 package com.jbrod.analizer.lexer;
 
+import com.jbrod.analizer.parser.automatas.Recurrentes;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -18,7 +19,45 @@ import jflex.anttask.JFlexTask;
 public class Lexergen {
 
     public static void main(String[] args) throws IOException {
-        //String flex = "C:/Users/Jorge/OneDrive/Documents/NetBeansProjects/Lenguajes/parser-py/analizer/analizer/src/main/java/com/jbrod/analizer/lexer/Lexer.flex";
+        
+        
+        System.out.println("Prueba rango: ");
+        
+        
+        pruebaRange("range(20)");
+        pruebaRange("range(20,2)");
+        pruebaRange("range(2,3,4)");
+        pruebaRange("x");
+        System.out.println(""); System.out.println(""); System.out.println(""); System.out.println(""); 
+        
+        
+        pruebaArreglo("[]");
+        pruebaArreglo("[1]");
+        pruebaArreglo("[2,3,4]");
+        pruebaArreglo("f");
+        
+    }
+    
+    private static void pruebaRange(String prueba) throws IOException{
+        Recurrentes r = new Recurrentes();
+        Lexer lexer = new  Lexer();
+        
+        lexer.Analize(prueba);
+        System.out.println("Prueba rango: " + prueba + r.rango(lexer.getTokenList(), 0));
+        
+    }
+    
+    private static void pruebaArreglo(String prueba) throws IOException{
+        Recurrentes r = new Recurrentes();
+        Lexer lexer = new Lexer(); 
+        
+        lexer.Analize(prueba);
+        System.out.println("Prueba Arreglo: " + prueba + r.array(lexer.getTokenList(), 0));
+        
+    }
+        
+        
+        /*//String flex = "C:/Users/Jorge/OneDrive/Documents/NetBeansProjects/Lenguajes/parser-py/analizer/analizer/src/main/java/com/jbrod/analizer/lexer/Lexer.flex";
         
         String test = "def if + \"cadena \" : ( 4 + 5 )\n" +
                         "mi_id_\n" +
@@ -84,4 +123,4 @@ public class Lexergen {
         int kk = 4;
         
     }*/
-}
+
