@@ -49,9 +49,10 @@ public class Recurrentes {
      * - diccionario - 
      * - par clave / valor -
      * - tupla -
-     * - else 
+     * - else -
      * - expresion condicional 
      **/
+    
     //public SyntaxToken analizar(LinkedList<Token> tokenList, int inicio){
         
         
@@ -315,7 +316,28 @@ public class Recurrentes {
     
     
     
+    public boolean expresionCondicional(List <Token> tokenList, int i){
     
+        //expresión condicional = [ op neg ]  expresión condicional 
+        //expresión condicional = “ true “ | “ false “ 
+        //expresión condicional = expresión condicional       op log 	  expresión condicional 
+        //expresión condicional = ( expresión ) op comp ( expresión )
+        int checkpoint = i;
+        Token inicio = tokenList.get(i);
+        String sentencia = ""; 
+        String tipo = "Expresión condicional";
+        
+        Token actual = tokenList.get(i);
+        
+        if(actual.getLexeme().equals("true") || actual.getLexeme().equals("false")){
+            //Es una expresion condicional
+            sentencia += actual.getLexeme();
+            parser. agregarTokenSintactico(new SyntaxToken( sentencia ,inicio.getRow(), inicio.getColumn(), tipo, i) );
+            parser.actualizarIterador(i+1);
+            return true;
+        } //Hacer Expresiones else if()
+        return false; 
+    }
     
     
     //else
