@@ -1,5 +1,5 @@
 
-package com.jbrod.analizer.parser;
+package com.jbrod.analizer.parser.tokens;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -16,7 +16,7 @@ public class SyntaxToken {
     String tipo;
     
     //posiblemente una lista de este mismo token, pero hay que evaluarlo, añadir lista con apuntadores a sentencias que guarden bloques de codigo
-    List<SyntaxToken> bloqueDeCodigo;
+    //List<SyntaxToken> bloqueDeCodigo;
     
     //indica la posicion en la lista del ultimo token lexico para continuar el analisis
     int posicionFinalLista;
@@ -37,9 +37,9 @@ public class SyntaxToken {
     }
     
     
-    public void inicializarBloqueDeCodigo(){
+    /*public void inicializarBloqueDeCodigo(){
         bloqueDeCodigo = new LinkedList<>();
-    }
+    }*/
     
     
 

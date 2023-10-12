@@ -57,10 +57,10 @@ comment=#.*                 //Comentario
 ":" {        return new Token(Tokens.OTHERS, yytext(), yytext(), yyline, yycolumn); }
 
 /* Fin de linea*/
-{eol} { return new Token(Tokens.EOL, yytext(), "\n", yyline, yycolumn); }
+{eol} { /*return new Token(Tokens.EOL, yytext(), "\n", yyline, yycolumn);*/ }
 
 /* Espacio */
-{espacio} { return new Token(Tokens.SPACE, yytext(), "\n", yyline, yycolumn); }
+{espacio} { /*return new Token(Tokens.SPACE, yytext(), "\n", yyline, yycolumn); */}
 
 /* Aritmeticos */
 "+"  |

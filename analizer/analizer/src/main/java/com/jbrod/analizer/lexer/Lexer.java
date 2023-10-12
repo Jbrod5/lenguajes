@@ -38,6 +38,8 @@ public class Lexer {
             
             if(token == null){
                 return;
+            }else{
+                //System.out.println(token.getLexeme());
             }
             
             tokenList.add(token);
@@ -48,7 +50,7 @@ public class Lexer {
     /**
      * Retorna la lista de tokens.
      **/
-    public List<Token> getTokenList() {
+    public LinkedList<Token> getTokenList() {
         
         return tokenList;
     
