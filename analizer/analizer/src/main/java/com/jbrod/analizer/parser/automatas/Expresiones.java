@@ -20,6 +20,7 @@ public class Expresiones {
     //expresión = arreglo { arreglo }                                   # arreglo n- dimensional -
     //expresión = diccionario  -
     //expresión = constante -
+    //operador ternario = expresión  “if”  expresión condicional  “else” expresión - en condicionales
 
     private Parser parser; 
     private LinkedList<SyntaxToken> syntaxList; 
