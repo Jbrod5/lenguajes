@@ -44,8 +44,8 @@ public class VariablesAsignacion {
         Token actual = tokenList.get(i);
 
         //Objetos necesarios para evaluar expresiones
-        Expresiones expresiones = new Expresiones(); 
-        ExpresionesCondicionales condicionales = new ExpresionesCondicionales();
+        Expresiones expresiones = new Expresiones(parser, syntaxList); 
+        ExpresionesCondicionales condicionales = new ExpresionesCondicionales(parser, syntaxList);
 
         int identificadores = 0; 
 
@@ -65,6 +65,9 @@ public class VariablesAsignacion {
                 actual = tokenList.get(i);
                 if(actual.getTokenType() == Tokens.IDENTIFIER){
                     identificadores++;
+                    sentencia += actual.getLexeme();
+                    i++;
+                    actual = tokenList.get(i);
                 }else{
                     //No puede quedar una coma que no esté acompañada de otro identificador
                     return false;
@@ -84,14 +87,23 @@ public class VariablesAsignacion {
                     SyntaxToken ultimo = syntaxList.getLast();
                     sentencia += ultimo.getSentencia();
                     i = ultimo.getPosicionFinalLista() + 1;
+                    actual = tokenList.get(i);
+                            
                     exp++;
-
-                    while(expresiones.expresion(tokenList, i) || condicionales.condicional(tokenList, i)){
-
-                        ultimo = syntaxList.getLast();
-                        sentencia += ultimo.getSentencia();
-                        i = ultimo.getPosicionFinalLista()+1;
-                        exp++;
+                    
+                    
+                    while(actual.getLexeme().equals(",")){
+                        sentencia += actual.getLexeme();
+                        i++;
+                        actual = tokenList.get(i);
+                        if(expresiones.expresion(tokenList, i) || condicionales.condicional(tokenList, i)){
+                            ultimo = syntaxList.getLast();
+                            sentencia += ultimo.getSentencia();
+                            i = ultimo.getPosicionFinalLista()+1;
+                            exp++;
+                        }
+                        
+                        actual = tokenList.get(i);
 
                     }
 

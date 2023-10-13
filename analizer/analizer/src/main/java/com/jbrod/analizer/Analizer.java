@@ -30,7 +30,8 @@ public class Analizer{
         pruebaArreglo("[2,]");*/
         
         
-        String prueba = "range (2) (2,4,6) "
+        String prueba = "a,b,c = 4,3,2"
+                + "\nrange (2) (2,4,6) "
                 + "\n [] [5,2,5] else range (4,2,3)"
                 + "\n {frifayer : 4, pedrigri : \" piedro \"}"
                 + "\n ('chamba', 4)\n"

@@ -3,7 +3,9 @@ package com.jbrod.analizer.parser;
 
 import com.jbrod.analizer.parser.tokens.SyntaxToken;
 import com.jbrod.analizer.lexer.Token;
+import com.jbrod.analizer.lexer.Tokens;
 import com.jbrod.analizer.parser.automatas.Recurrentes;
+import com.jbrod.analizer.parser.automatas.VariablesAsignacion;
 import com.jbrod.analizer.parser.tokens.CodeBlock;
 import com.jbrod.analizer.parser.tokens.Funcion;
 import java.util.ArrayList;
@@ -23,6 +25,9 @@ public class Parser {
     
     // - Atomatas a usar --------------------------------------
     private Recurrentes recurrentes; 
+    private VariablesAsignacion variables_asignacion;
+            
+            
     
     private int iterador; // -> iterador encargado de llevar el control
     
@@ -39,6 +44,7 @@ public class Parser {
      **/
     public void inicializarAutomatas(){
         recurrentes = new Recurrentes(sintaxTokens, this);
+        variables_asignacion = new VariablesAsignacion(this, sintaxTokens);
     }
     
     
@@ -49,15 +55,17 @@ public class Parser {
         
         //inicializarAutomatas();
         //this.lexTokens = lexTokens;
-
-        Token tokenActual = lexTokens.get(iterador); 
-        String lexemaActual = tokenActual.getLexeme();        
+        
         
         // Recorrer la lista de tokens generados por el lexer (de manera recursiva, cada automata llama a esta funcion cuando termina)
         //for (iterador = 0; iterador < lexTokens.size(); iterador++) {
         if(iterador < lexTokens.size()){
             
-                lexemaActual = lexTokens.get(iterador).getLexeme();
+            Token tokenActual = lexTokens.get(iterador); 
+            String lexemaActual = tokenActual.getLexeme();
+            
+                //tokenActual = lexTokens.get(iterador);
+                //lexemaActual = tokenActual.getLexeme();
             
                 switch(lexemaActual){
                 case "range": if(recurrentes.rango          (lexTokens, iterador)){Parse(lexTokens);}; break;
@@ -66,6 +74,13 @@ public class Parser {
                 case "("    : if(recurrentes.tupla          (lexTokens, iterador)){Parse(lexTokens);}; break;  
                 
                 case "else" : if(recurrentes.sino           (lexTokens, iterador)){Parse(lexTokens);}; break; 
+                
+                default:
+                    if(tokenActual.getTokenType() == Tokens.IDENTIFIER){
+                        if(variables_asignacion.asignacionOrDeclaracion(lexTokens, iterador)){
+                            Parse(lexTokens);
+                        }
+                    }
                 
                 
             }

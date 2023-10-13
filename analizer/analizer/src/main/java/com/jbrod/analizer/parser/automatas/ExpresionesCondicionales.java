@@ -28,6 +28,13 @@ public class ExpresionesCondicionales {
     private Parser parser; 
     private LinkedList<SyntaxToken> syntaxList; 
 
+    public ExpresionesCondicionales(Parser parser, LinkedList<SyntaxToken> syntaxList) {
+        this.parser = parser;
+        this.syntaxList = syntaxList;
+    }
+    
+    
+
 
     /**
      * Evalúa una posible expresión condicional.
@@ -41,7 +48,7 @@ public class ExpresionesCondicionales {
         String tipo = "Expresion condicional";
 
         Token actual = tokenList.get(i);
-        Expresiones e = new Expresiones();
+        Expresiones e = new Expresiones(parser, syntaxList);
 
         // 1. true/false
         if(actual.getLexeme().equals("true") || actual.getLexeme().equals("false")){

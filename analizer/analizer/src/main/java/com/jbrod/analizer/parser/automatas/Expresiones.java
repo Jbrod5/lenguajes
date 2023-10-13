@@ -24,6 +24,13 @@ public class Expresiones {
 
     private Parser parser; 
     private LinkedList<SyntaxToken> syntaxList; 
+
+    public Expresiones(Parser parser, LinkedList<SyntaxToken> syntaxList) {
+        this.parser = parser;
+        this.syntaxList = syntaxList;
+    }
+    
+    
     
     /**
      * Evalúa una posible expresión.
