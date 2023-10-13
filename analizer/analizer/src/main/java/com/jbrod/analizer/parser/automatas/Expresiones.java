@@ -86,6 +86,13 @@ public class Expresiones {
             sentencia += syntaxList.getLast().getSentencia();
             syntaxList.add(new SyntaxToken(sentencia, inicial.getRow(), inicial.getColumn(), tipo, i));
             return true;
+            
+            //Tupla 
+        } else if(r.tupla(tokenList, i)){
+            tipo += " | Tupla";
+            sentencia += syntaxList.getLast().getSentencia();
+            syntaxList.add(new SyntaxToken(sentencia, inicial.getRow(), inicial.getColumn(), tipo, i));
+            return true; 
         }
         
         return false; 
