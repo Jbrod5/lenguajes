@@ -19,6 +19,7 @@ public enum Tokens {
     
     //Ajustes
     INTEGER,
+    TEXT,
     
     
     SPACE,

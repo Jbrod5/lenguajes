@@ -134,10 +134,13 @@ comment=#.*                 //Comentario
 /* Constantes  ------- */
 {D}+ |
 {D}+"."{D}+ |
-{caddob}    |
-{cadsimp}   |
 "true"      |
 "false"     { return new Token(Tokens.CONSTANT, yytext(), yytext(), yyline, yycolumn); }
+
+/* Cadenas de Texto ---- */
+{caddob}    |
+{cadsimp}   { return new Token(Tokens.TEXT, yytext(), yytext(), yyline, yycolumn); }
+
 
 /*  Identificadores  ->  [a-zA-Z_][a-zA-Z0-9_]*    */
 {L}({L}|{D})* { return new Token(Tokens.IDENTIFIER, yytext(), "[a-zA-Z_][a-zA-Z0-9_]*", yyline, yycolumn); } 
