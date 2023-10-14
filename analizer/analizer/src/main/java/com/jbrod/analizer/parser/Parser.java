@@ -67,7 +67,10 @@ public class Parser {
         
         // Recorrer la lista de tokens generados por el lexer (de manera recursiva, cada automata llama a esta funcion cuando termina)
         //for (iterador = 0; iterador < lexTokens.size(); iterador++) {
-        if(iterador < lexTokens.size()){
+        
+        //try{
+        
+            if(iterador < lexTokens.size()){
             System.out.println(iterador);
             
             Token tokenActual = lexTokens.get(iterador); 
@@ -107,12 +110,17 @@ public class Parser {
                     }
                 
                 
-            }
+            //}
             
             // Fuera del switch, lo que no se puede evaluar con el lexema, sino que necesita más info (tipo de token, etc)
         
         
-        }       
+        }
+            
+       /* }catch(Exception e){
+        
+        }*/}
+               
         //}
         
     }

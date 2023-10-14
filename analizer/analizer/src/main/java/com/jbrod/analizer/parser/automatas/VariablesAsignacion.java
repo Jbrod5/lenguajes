@@ -88,6 +88,7 @@ public class VariablesAsignacion {
                     SyntaxToken ultimo = syntaxList.getLast();
                     sentencia += ultimo.getSentencia();
                     i = ultimo.getPosicionFinalLista() + 1;
+                    
                     actual = tokenList.get(i);
                             
                     exp++;
