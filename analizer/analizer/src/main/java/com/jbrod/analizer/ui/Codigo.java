@@ -20,6 +20,7 @@ public class Codigo extends javax.swing.JPanel {
 
     private Controller controller; 
     private Tokens tokens; 
+    private Reportes reportes;
     
     /**
      * Creates new form Codigo
@@ -30,7 +31,7 @@ public class Codigo extends javax.swing.JPanel {
         this.controller = controller; 
     }
     
-    public void setTokens(Tokens tokens){
+    public void setTokens(Tokens tokens, Reportes reportes){
         this.tokens = tokens;
     }
 
@@ -131,6 +132,9 @@ public class Codigo extends javax.swing.JPanel {
         try {
             // TODO add your handling code here:
             controller.analize(txpnCodigo.getText());
+            tokens.dibujarTokens();
+            reportes.dibujarReportes();
+            
         } catch (IOException ex) {
             Logger.getLogger(Codigo.class.getName()).log(Level.SEVERE, null, ex);
         }

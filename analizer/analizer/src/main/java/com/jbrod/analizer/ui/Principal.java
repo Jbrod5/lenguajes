@@ -34,7 +34,7 @@ public class Principal extends javax.swing.JFrame {
     }
     
     public void inicializar(){
-        codigo.setTokens(tokens);
+        codigo.setTokens(tokens, reportes);
     }
 
     /**
