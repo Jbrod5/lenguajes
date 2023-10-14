@@ -26,6 +26,7 @@ espacio=[ ]
 //espacio=[ ,\t,\r]+ 
 
 eol=[\n]                    //Fin de linea
+endl=[\r]
 
 caddob=\".*\"               //Cadena con comillas dobles
 cadsimp='.*'                //Cadena con comillas simples
@@ -58,6 +59,7 @@ comment=#.*                 //Comentario
 
 /* Fin de linea*/
 {eol} { /*return new Token(Tokens.EOL, yytext(), "\n", yyline, yycolumn);*/ }
+{endl} {}
 
 /* Espacio */
 {espacio} { /*return new Token(Tokens.SPACE, yytext(), "\n", yyline, yycolumn); */}
@@ -131,15 +133,17 @@ comment=#.*                 //Comentario
 
 /*  */
 
+/* Cadenas de Texto ---- */
+{caddob}    |
+{cadsimp}   { return new Token(Tokens.TEXT, yytext(), yytext(), yyline, yycolumn); }
+
 /* Constantes  ------- */
 {D}+ |
 {D}+"."{D}+ |
 "true"      |
 "false"     { return new Token(Tokens.CONSTANT, yytext(), yytext(), yyline, yycolumn); }
 
-/* Cadenas de Texto ---- */
-{caddob}    |
-{cadsimp}   { return new Token(Tokens.TEXT, yytext(), yytext(), yyline, yycolumn); }
+
 
 
 /*  Identificadores  ->  [a-zA-Z_][a-zA-Z0-9_]*    */
