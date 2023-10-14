@@ -64,7 +64,7 @@ public class Expresiones {
             } 
             
             //Constante
-        } else if(actual.getTokenType() == Tokens.CONSTANT || actual.getTokenType() == Tokens.INTEGER){
+        } else if(actual.getTokenType() == Tokens.CONSTANT || actual.getTokenType() == Tokens.INTEGER || actual.getTokenType() == Tokens.TEXT){
             sentencia += actual.getLexeme();
             tipo += " | Constante";
             syntaxList.add(new SyntaxToken(sentencia, inicial.getRow(),inicial.getColumn(), tipo, i));
@@ -73,8 +73,9 @@ public class Expresiones {
             //Arreglo /n - dimensional
         }else if(r.array(tokenList, i)){
             tipo += " | Arreglo";
-            sentencia += syntaxList.getLast().getSentencia();
-            i++;
+            SyntaxToken ultimo = syntaxList.getLast();
+            sentencia += ultimo.getSentencia();
+            i = ultimo.getPosicionFinalLista()+1;
             boolean ndimensional = false; 
             while(r.array(tokenList, i)){
                 ndimensional = true;

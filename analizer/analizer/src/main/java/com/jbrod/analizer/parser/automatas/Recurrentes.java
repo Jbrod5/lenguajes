@@ -150,6 +150,7 @@ public class Recurrentes {
         
         Token actual;
         actual = tokenList.get(i);
+        Expresiones ex = new Expresiones(parser, TokenSyntaxList);
         
         //arreglo arreglo = “[“   constante | variable  “]” 			 
         if(actual.getLexeme().equals("[") ){
@@ -162,7 +163,7 @@ public class Recurrentes {
             
             while(! actual.getLexeme().equals("]")){
                 
-                if(actual.getTokenType() == Tokens.CONSTANT || actual.getTokenType() == Tokens.INTEGER || actual.getTokenType() == Tokens.IDENTIFIER ) {
+                if(actual.getTokenType() == Tokens.CONSTANT || actual.getTokenType() == Tokens.INTEGER || actual.getTokenType() == Tokens.IDENTIFIER || actual.getTokenType() == Tokens.TEXT ) {
                     sentencia += actual.getLexeme();
                     i++;
                     actual = tokenList.get(i);
@@ -171,11 +172,23 @@ public class Recurrentes {
                         i++;
                         actual = tokenList.get(i);
                     }else if(actual.getLexeme().equals("]")){
-                        break; 
+                        //Es un arreglo, retornar el token
+                        sentencia += actual.getLexeme();
+                        parser.agregarTokenSintactico(new SyntaxToken( sentencia ,inicio.getRow(), inicio.getColumn(), tipo, i) );
+                        parser.actualizarIterador(i+1);
+                        return true;
+                        //break; 
                     }else{
                         parser.actualizarIterador(backup);
                         return false; 
                     }
+                    
+                }else if(ex.expresion(tokenList, i)){
+                    SyntaxToken ultimo = TokenSyntaxList.getLast();
+                    sentencia += ultimo.getSentencia();
+                    i = ultimo.getPosicionFinalLista()+1;
+                    actual = tokenList.get(i);
+                    parser.actualizarIterador(i);
                 }
             }
             
@@ -221,6 +234,8 @@ public class Recurrentes {
                    }else{
                        break; 
                    }
+                }else{
+                    break;
                 }
             }    
             
@@ -256,7 +271,7 @@ public class Recurrentes {
                 i++; 
                 actual = tokenList.get(i);
                 
-                if(actual.getTokenType() == Tokens.CONSTANT || actual.getTokenType() == Tokens.IDENTIFIER || actual.getTokenType() == Tokens.INTEGER){
+                if(actual.getTokenType() == Tokens.CONSTANT || actual.getTokenType() == Tokens.IDENTIFIER || actual.getTokenType() == Tokens.INTEGER || actual.getTokenType() == Tokens.TEXT){
                     sentencia += actual.getLexeme();
                     TokenSyntaxList. add( new SyntaxToken( sentencia ,inicio.getRow(), inicio.getColumn(), tipo, i) );
                     //parser.actualizarIterador(i+1);
@@ -329,7 +344,7 @@ public class Recurrentes {
         
         Token actual = tokenList.get(i);
         
-        if(actual.getLexeme().equals("true") || actual.getLexeme().equals("false")){
+        if(actual.getLexeme().equals("True") || actual.getLexeme().equals("False")){
             //Es una expresion condicional
             sentencia += actual.getLexeme();
             parser. agregarTokenSintactico(new SyntaxToken( sentencia ,inicio.getRow(), inicio.getColumn(), tipo, i) );

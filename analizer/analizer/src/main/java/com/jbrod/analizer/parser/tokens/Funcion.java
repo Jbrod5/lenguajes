@@ -11,8 +11,8 @@ public class Funcion extends CodeBlock {
 
     LinkedList<String> params; //parametros que llevan dentro las funciones
     
-    public Funcion(LinkedList <String> params) {
-        super(null, 0, 0, null, 0);
+    public Funcion(LinkedList <String> params, String sentencia, int fila, int columna, String tipo, int posicionFinalLista) {
+        super(sentencia,fila,columna,tipo, posicionFinalLista);
         this.params = params; 
     }
     

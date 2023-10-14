@@ -4,7 +4,9 @@ package com.jbrod.analizer.parser;
 import com.jbrod.analizer.parser.tokens.SyntaxToken;
 import com.jbrod.analizer.lexer.Token;
 import com.jbrod.analizer.lexer.Tokens;
+import com.jbrod.analizer.parser.automatas.Ciclos;
 import com.jbrod.analizer.parser.automatas.Condicionales;
+import com.jbrod.analizer.parser.automatas.Funciones;
 import com.jbrod.analizer.parser.automatas.Recurrentes;
 import com.jbrod.analizer.parser.automatas.VariablesAsignacion;
 import com.jbrod.analizer.parser.tokens.CodeBlock;
@@ -27,8 +29,9 @@ public class Parser {
     // - Atomatas a usar --------------------------------------
     private Recurrentes recurrentes; 
     private VariablesAsignacion variables_asignacion;
-    private Condicionales condicionales; 
-            
+    private Condicionales condicionales;
+    private Ciclos ciclos; 
+    private Funciones funciones;
             
     
     private int iterador; // -> iterador encargado de llevar el control
@@ -48,6 +51,8 @@ public class Parser {
         recurrentes = new Recurrentes(sintaxTokens, this);
         variables_asignacion = new VariablesAsignacion(this, sintaxTokens);
         condicionales = new Condicionales(this, sintaxTokens);
+        ciclos = new Ciclos(this, sintaxTokens);
+        funciones = new Funciones(this, sintaxTokens);
     }
     
     
@@ -63,6 +68,7 @@ public class Parser {
         // Recorrer la lista de tokens generados por el lexer (de manera recursiva, cada automata llama a esta funcion cuando termina)
         //for (iterador = 0; iterador < lexTokens.size(); iterador++) {
         if(iterador < lexTokens.size()){
+            System.out.println(iterador);
             
             Token tokenActual = lexTokens.get(iterador); 
             String lexemaActual = tokenActual.getLexeme();
@@ -80,11 +86,24 @@ public class Parser {
                 case "if"   : if(condicionales.condicional  (lexTokens, iterador)){Parse(lexTokens);}; break; 
                 case "elif" : if(condicionales.condicional  (lexTokens, iterador)){Parse(lexTokens);}; break;
                 
+                case "for"  : if(ciclos.ciclo               (lexTokens, iterador)){Parse(lexTokens);}; break; 
+                case "while": if(ciclos.ciclo               (lexTokens, iterador)){Parse(lexTokens);}; break;
+                
+                case "def"  : if(funciones.funcion          (lexTokens, iterador)){Parse(lexTokens);}; break;
+                
                 default:
                     if(tokenActual.getTokenType() == Tokens.IDENTIFIER){
                         if(variables_asignacion.asignacionOrDeclaracion(lexTokens, iterador)){
                             Parse(lexTokens);
                         }
+                    }else if(tokenActual.getTokenType() == Tokens.COMMENT){
+                        agregarTokenSintactico(new SyntaxToken(lexemaActual, tokenActual.getRow(), tokenActual.getColumn(), "Comentario", iterador));
+                        iterador++;
+                        Parse(lexTokens);
+                    }else{
+                        agregarTokenSintactico(new SyntaxToken(lexemaActual, tokenActual.getRow(), tokenActual.getColumn(), "No identificado", iterador));
+                        iterador++;
+                        Parse(lexTokens);
                     }
                 
                 

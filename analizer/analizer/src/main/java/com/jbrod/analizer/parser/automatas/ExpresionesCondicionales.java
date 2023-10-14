@@ -51,7 +51,7 @@ public class ExpresionesCondicionales {
         Expresiones e = new Expresiones(parser, syntaxList);
 
         // 1. true/false
-        if(actual.getLexeme().equals("true") || actual.getLexeme().equals("false")){
+        if(actual.getLexeme().equals("True") || actual.getLexeme().equals("False")){
             //Es una expresion condicional
             sentencia += actual.getLexeme();
             syntaxList.add(new SyntaxToken(sentencia, inicial.getRow(), inicial.getColumn(), tipo, i)); 
@@ -126,7 +126,7 @@ public class ExpresionesCondicionales {
                 return true; 
             }
 
-        } 
+        }  
 
         return false; 
 

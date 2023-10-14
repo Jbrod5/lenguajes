@@ -82,7 +82,8 @@ public class VariablesAsignacion {
 
 
                 int exp = 0; 
-                if(expresiones.expresion(tokenList, i) || condicionales.condicional(tokenList, i)){
+                
+                    if(expresiones.expresion(tokenList, i) || condicionales.condicional(tokenList, i)){
 
                     SyntaxToken ultimo = syntaxList.getLast();
                     sentencia += ultimo.getSentencia();
