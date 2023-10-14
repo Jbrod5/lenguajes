@@ -45,19 +45,25 @@ public class Ciclos {
             tipo += actual.getLexeme();
             sentencia += actual.getLexeme(); 
             i++;
-            actual = tokenList.get(i);
+            if(i<tokenList.size()){
+                actual = tokenList.get(i);
+            }
 
             if(actual.getTokenType() == Tokens.IDENTIFIER){                                 //identificador
 
                 sentencia += actual.getLexeme(); 
                 i++;
-                actual = tokenList.get(i);
+                if(i<tokenList.size()){
+                    actual = tokenList.get(i);
+                }
 
                 if(actual.getLexeme().equals("in")){                              //"in"
 
                     sentencia += actual.getLexeme();
                     i++;
-                    actual = tokenList.get(i);
+                    if(i<tokenList.size()){
+                        actual = tokenList.get(i);
+                    }
 
                     
                     // secuencia  =  arreglo | rango | caddoblecomilla | cadsimplecomilla | diccionario | tupla
@@ -90,14 +96,19 @@ public class Ciclos {
             tipo += actual.getLexeme();
             sentencia += actual.getLexeme(); 
             i++;
-            actual = tokenList.get(i);
+            if(i<tokenList.size()){
+                actual = tokenList.get(i);
+            }
     
             ExpresionesCondicionales condicionales = new ExpresionesCondicionales(parser, syntaxTokens);            //expresion condicional 
             if(condicionales.condicional(tokenList, i)){
                 SyntaxToken ultimo = syntaxTokens.getLast();
                 sentencia += ultimo.getSentencia();
                 i = ultimo.getPosicionFinalLista() + 1; 
-                actual = tokenList.get(i);
+                
+                if(i<tokenList.size()){
+                    actual = tokenList.get(i);
+                }
 
                 if(actual.getLexeme().equals(":")){                                                         // " : "
 

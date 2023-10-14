@@ -56,7 +56,11 @@ public class VariablesAsignacion {
             identificadores = 1;
             sentencia += actual.getLexeme();
             i++;
-            actual = tokenList.get(i);
+            
+            if(i<tokenList.size()){
+                actual = tokenList.get(i);
+            }
+            
 
 
             while(actual.getLexeme().equals(",")){
@@ -67,7 +71,9 @@ public class VariablesAsignacion {
                     identificadores++;
                     sentencia += actual.getLexeme();
                     i++;
-                    actual = tokenList.get(i);
+                    if(i<tokenList.size()){
+                        actual = tokenList.get(i);
+                    }
                 }else{
                     //No puede quedar una coma que no esté acompañada de otro identificador
                     return false;
@@ -78,7 +84,9 @@ public class VariablesAsignacion {
             if(actual.getTokenType() == Tokens.ASSIGNAMENT){
                 sentencia +=  actual.getLexeme();
                 i++;
-                actual = tokenList.get(i);
+                if(i<tokenList.size()){
+                   actual = tokenList.get(i);
+                }
 
 
                 int exp = 0; 
@@ -89,7 +97,9 @@ public class VariablesAsignacion {
                     sentencia += ultimo.getSentencia();
                     i = ultimo.getPosicionFinalLista() + 1;
                     
-                    actual = tokenList.get(i);
+                    if(i<tokenList.size()){
+                      actual = tokenList.get(i);
+                    }
                             
                     exp++;
                     
@@ -97,7 +107,9 @@ public class VariablesAsignacion {
                     while(actual.getLexeme().equals(",")){
                         sentencia += actual.getLexeme();
                         i++;
-                        actual = tokenList.get(i);
+                        if(i<tokenList.size()){
+                            actual = tokenList.get(i);
+                        }
                         if(expresiones.expresion(tokenList, i) || condicionales.condicional(tokenList, i)){
                             ultimo = syntaxList.getLast();
                             sentencia += ultimo.getSentencia();
@@ -105,7 +117,9 @@ public class VariablesAsignacion {
                             exp++;
                         }
                         
-                        actual = tokenList.get(i);
+                        if(i<tokenList.size()){
+                            actual = tokenList.get(i);
+                        }
 
                     }
 

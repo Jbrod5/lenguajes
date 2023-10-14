@@ -41,13 +41,17 @@ public class Funciones {
         if(actual.getLexeme().equals("def")){
             sentencia += actual.getLexeme();
             i++;
-            actual = tokenList.get(i);
+            if(i<tokenList.size()){
+                actual = tokenList.get(i);
+            }
 
             // 2. identificador
             if(actual.getTokenType() == Tokens.IDENTIFIER){
                 sentencia += actual.getLexeme();
                 i++;
-                actual = tokenList.get(i);
+                if(i<tokenList.size()){
+                    actual = tokenList.get(i);
+                }
 
                 //3. tupla
                 Recurrentes r = new Recurrentes(syntaxList, parser); 

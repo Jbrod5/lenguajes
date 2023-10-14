@@ -52,18 +52,24 @@ public class Condicionales {
             tipo += actual.getLexeme();
             sentencia += actual.getLexeme();
             i++;
-            actual = tokenList.get(i);
+            if(i<tokenList.size()){
+                actual = tokenList.get(i);
+            }
 
             if(condicionales.condicional(tokenList, i)){                                                           // expresion condicional
                 SyntaxToken ultimo  = syntaxTokens.getLast();
                 sentencia += ultimo.getSentencia();
                 i = ultimo.getPosicionFinalLista() + 1;
-                actual = tokenList.get(i);
+                if(i<tokenList.size()){
+                    actual = tokenList.get(i);
+                }
 
                 if(actual.getLexeme().equals(":")){                                                       //":"
                     sentencia += actual.getLexeme();
                     i++;
-                    actual = tokenList.get(i);
+                    if(i<tokenList.size()){
+                        actual = tokenList.get(i);
+                    }
 
                     // if contiene un bloque de codigo, puede continuar su ejecucion
                     codeBlock = new CodeBlock(sentencia, inicial.getRow(), inicial.getColumn(), tipo, i);

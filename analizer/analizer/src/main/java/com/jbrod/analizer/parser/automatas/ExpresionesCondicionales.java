@@ -63,13 +63,17 @@ public class ExpresionesCondicionales {
             sentencia += ultimo.getSentencia();
             i = ultimo.getPosicionFinalLista() + 1;
 
-            actual = tokenList.get(i);
+            if(i<tokenList.size()){
+                actual = tokenList.get(i);
+            }
 
             // expresion    op comp     expresion 
             if(actual.getTokenType() == Tokens.COMPARISION){    //op comp
                 sentencia += actual.getLexeme();
                 i++;
-                actual = tokenList.get(i);
+                if(i<tokenList.size()){
+                    actual = tokenList.get(i);
+                }
 
                 if(e.expresion(tokenList, i)){                  //(expresion)
                     ultimo = syntaxList.getLast();
@@ -86,19 +90,25 @@ public class ExpresionesCondicionales {
             } else if(actual.getLexeme().equals("if")) {        //if
                 sentencia += actual.getLexeme();
                 i++;
-                actual = tokenList.get(i);
+                if(i<tokenList.size()){
+                    actual = tokenList.get(i);
+                }
 
                 if(condicional(tokenList, i)){                          // expresion condicional
                     ultimo = syntaxList.getLast();
                     sentencia += ultimo.getSentencia();
                     i = ultimo.getPosicionFinalLista() + 1;
                     
-                    actual = tokenList.get(i);
+                    if(i<tokenList.size()){
+                            actual = tokenList.get(i);
+                    }
 
                     if(actual.getLexeme().equals("else")){      //else
                         sentencia += actual.getLexeme();
                         i++; 
-                        actual = tokenList.get(i);
+                        if(i<tokenList.size()){
+                            actual = tokenList.get(i);
+                        }
 
                         if(e.expresion(tokenList, i)){                  //expresion
                             ultimo = syntaxList.getLast();

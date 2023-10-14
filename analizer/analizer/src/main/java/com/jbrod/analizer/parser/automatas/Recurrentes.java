@@ -73,17 +73,23 @@ public class Recurrentes {
         if(actual.getLexeme().equals("range")){
             sentencia += actual.getLexeme();
             i ++;
-            actual = tokenList.get(i);
+            if(i<tokenList.size()){
+                actual = tokenList.get(i);
+            }
             
             if(actual.getLexeme().equals("(")){
                 sentencia += actual.getLexeme();
                 i++;
-                actual = tokenList.get(i);
+                if(i<tokenList.size()){
+                    actual = tokenList.get(i);
+                }
                 
                 if(actual.getTokenType() == Tokens.INTEGER){
                     sentencia += actual.getLexeme();
                     i++;
-                    actual = tokenList.get(i);
+                    if(i<tokenList.size()){
+                        actual = tokenList.get(i);
+                    }
                     
                     if(actual.getLexeme().equals(")")){
                     
@@ -96,12 +102,16 @@ public class Recurrentes {
                     } else if( actual.getLexeme().equals(",")){
                         sentencia += actual.getLexeme();
                         i++; 
-                        actual = tokenList.get(i);
+                        if(i<tokenList.size()){
+                            actual = tokenList.get(i);
+                        }
                         
                         if(actual.getTokenType() == Tokens.INTEGER){
                             sentencia += actual.getLexeme();
                             i++;
-                            actual = tokenList.get(i);
+                            if(i<tokenList.size()){
+                               actual = tokenList.get(i);
+                            }
                             
                             if(actual.getLexeme().equals(")")){
                             
@@ -114,12 +124,16 @@ public class Recurrentes {
                             }else if( actual.getLexeme().equals(",") ){
                                 sentencia += actual.getLexeme();
                                 i++;
-                                actual = tokenList.get(i);
+                                if(i<tokenList.size()){
+                                   actual = tokenList.get(i);
+                                }
                                 
                                 if(actual.getTokenType() == Tokens.INTEGER){
                                     sentencia += actual.getLexeme();
                                     i++;
-                                    actual = tokenList.get(i);
+                                    if(i<tokenList.size()){
+                                        actual = tokenList.get(i);
+                                    }
                                     
                                     if(actual.getLexeme().equals(")")){
                                         
@@ -166,11 +180,15 @@ public class Recurrentes {
                 if(actual.getTokenType() == Tokens.CONSTANT || actual.getTokenType() == Tokens.INTEGER || actual.getTokenType() == Tokens.IDENTIFIER || actual.getTokenType() == Tokens.TEXT ) {
                     sentencia += actual.getLexeme();
                     i++;
-                    actual = tokenList.get(i);
+                    if(i<tokenList.size()){
+                        actual = tokenList.get(i);
+                    }
                     if( actual.getLexeme().equals(",")){
                         sentencia += actual.getLexeme();
                         i++;
-                        actual = tokenList.get(i);
+                        if(i<tokenList.size()){
+                            actual = tokenList.get(i);
+                        }
                     }else if(actual.getLexeme().equals("]")){
                         //Es un arreglo, retornar el token
                         sentencia += actual.getLexeme();
@@ -187,7 +205,9 @@ public class Recurrentes {
                     SyntaxToken ultimo = TokenSyntaxList.getLast();
                     sentencia += ultimo.getSentencia();
                     i = ultimo.getPosicionFinalLista()+1;
-                    actual = tokenList.get(i);
+                    if(i<tokenList.size()){
+                        actual = tokenList.get(i);
+                    }
                     parser.actualizarIterador(i);
                 }
             }
@@ -216,20 +236,26 @@ public class Recurrentes {
         if(actual.getLexeme().equals("{")){
             sentencia += actual.getLexeme();
             i++;
-            actual = tokenList.get(i);
+            if(i<tokenList.size()){
+                actual = tokenList.get(i);
+            }
             
             while(!actual.getLexeme().equals("}")){
                 if(parClaveValor(tokenList, i)){
                    SyntaxToken tkn = TokenSyntaxList.getLast();
                    //posicion final mas uno, de lo contrario, evaluaremos el final del token guardado
                    i = tkn.getPosicionFinalLista() + 1;
-                   actual = tokenList.get(i);
+                   if(i<tokenList.size()){
+                       actual = tokenList.get(i);
+                   }
                    sentencia += tkn.getSentencia();
                    
                    if(actual.getLexeme().equals(",")){
                        sentencia += actual.getLexeme();
                        i++;
-                       actual = tokenList.get(i);
+                       if(i<tokenList.size()){
+                            actual = tokenList.get(i);
+                        }
                        
                    }else{
                        break; 
@@ -264,12 +290,16 @@ public class Recurrentes {
         if(actual.getTokenType() == Tokens.IDENTIFIER){
             sentencia += actual.getLexeme();
             i++; 
-            actual = tokenList.get(i);
+            if(i<tokenList.size()){
+                actual = tokenList.get(i);
+            }
             
             if(actual.getLexeme().equals(":")){
                 sentencia += actual.getLexeme();
                 i++; 
-                actual = tokenList.get(i);
+                if(i<tokenList.size()){
+                    actual = tokenList.get(i);
+                }
                 
                 if(actual.getTokenType() == Tokens.CONSTANT || actual.getTokenType() == Tokens.IDENTIFIER || actual.getTokenType() == Tokens.INTEGER || actual.getTokenType() == Tokens.TEXT){
                     sentencia += actual.getLexeme();
@@ -297,19 +327,25 @@ public class Recurrentes {
         
             sentencia += actual.getLexeme();
             i++;
-            actual = tokenList.get(i);
+            if(i<tokenList.size()){
+                            actual = tokenList.get(i);
+            }
             
             while (! actual.getLexeme().equals(")")){
                 
                 if(actual.getTokenType() == Tokens.CONSTANT || actual.getTokenType() == Tokens.INTEGER){
                     sentencia += actual.getLexeme();
                     i++; 
-                    actual = tokenList.get(i);
+                    if(i<tokenList.size()){
+                            actual = tokenList.get(i);
+                    }
                     
                     if(actual.getLexeme().equals(",")){
                         sentencia += actual.getLexeme();
-                        i++; 
-                        actual = tokenList.get(i);
+                        i++;
+                        if(i<tokenList.size()){
+                            actual = tokenList.get(i);
+                        }
                     }else{
                         break;
                     }

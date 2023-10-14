@@ -33,6 +33,7 @@ public class Codigo extends javax.swing.JPanel {
     
     public void setTokens(Tokens tokens, Reportes reportes){
         this.tokens = tokens;
+        this.reportes = reportes;
     }
 
     /**
