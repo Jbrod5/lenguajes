@@ -67,6 +67,8 @@ public class Expresiones {
                 }
                 
             }
+            i--;
+            actual= tokenList.get(i);
             sentencia = "";
         }
         
