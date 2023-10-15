@@ -31,7 +31,7 @@ public class BloquesDeCodigo extends javax.swing.JPanel {
         LinkedList<CodeBlock> lsBlocks = controller.getBlocksSyntax();
         int contador =1;
         for (CodeBlock lsBlock : lsBlocks) {
-            jComboBox1.addItem("contador" + lsBlock.getSentencia());
+            jComboBox1.addItem( contador + " " + lsBlock.getSentencia());
             contador++;
         }
     }

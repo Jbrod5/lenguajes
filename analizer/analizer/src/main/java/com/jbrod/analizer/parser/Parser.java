@@ -113,20 +113,10 @@ public class Parser {
                         iterador++;
                         Parse(lexTokens);
                     }
-                
-                
-            //}
-            
-            // Fuera del switch, lo que no se puede evaluar con el lexema, sino que necesita más info (tipo de token, etc)
-        
         
         }
             
-       /* }catch(Exception e){
-        
-        }*/}
-               
-        //}
+       }
         
     }
     

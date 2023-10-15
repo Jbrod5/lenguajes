@@ -1,4 +1,4 @@
-
+    
 package com.jbrod.analizer.parser.automatas;
 
 import com.jbrod.analizer.lexer.Token;
@@ -63,9 +63,11 @@ public class VariablesAsignacion {
             
 
 
-            while(actual.getLexeme().equals(",")){
+            int cont = 0; 
+            while(actual.getLexeme().equals(",") && cont != 1000){
                 sentencia += actual.getLexeme();
                 i++;
+                cont++;
                 actual = tokenList.get(i);
                 if(actual.getTokenType() == Tokens.IDENTIFIER){
                     identificadores++;
@@ -130,6 +132,7 @@ public class VariablesAsignacion {
                         return true; 
                     }
 
+                    
                 }
 
 

@@ -61,7 +61,7 @@ public class Expresiones {
                 sentencia += actual.getLexeme(); 
                 syntaxList.add(new SyntaxToken(sentencia, inicial.getRow(), inicial.getColumn(), tipo, i));
                 return true;
-            } 
+            }
             
             //Constante
         } else if(actual.getTokenType() == Tokens.CONSTANT || actual.getTokenType() == Tokens.INTEGER || actual.getTokenType() == Tokens.TEXT){
