@@ -23,7 +23,7 @@ public class Parser {
     
     private LinkedList <Token> lexTokens; // -> Tokens provenientes del lexer
     private LinkedList <SyntaxToken> sintaxTokens; //-> Tokens sintácticos
-    private LinkedList <SyntaxToken> codeblockTokens; // -> Tokens sintácticos con bloques de codigo dentro
+    private LinkedList <CodeBlock> codeblockTokens; // -> Tokens sintácticos con bloques de codigo dentro
 
     
     // - Atomatas a usar --------------------------------------
@@ -146,6 +146,13 @@ public class Parser {
                 if(token.getColumna() > actualUltimoGeneral.getColumna()){
                     ((CodeBlock)actualUltimoGeneral).agregarToken(token);
                 }
+                
+                //si no es, verificar que la lista de bloques no esta vacia
+            }else if(!codeblockTokens.isEmpty()){
+                CodeBlock cod = codeblockTokens.getLast();
+                if(token.getColumna() > cod.getColumna()){
+                    cod.agregarToken(token);
+                }
             }
         }
         
@@ -157,7 +164,7 @@ public class Parser {
         
         //Si el token a agregar contiene un bloque de codigo, agregarlo a la lista de bloques de codigo
         if(token instanceof CodeBlock || token instanceof Funcion){
-            codeblockTokens.add(token);
+            codeblockTokens.add((CodeBlock)token);
         }
         
     }
@@ -179,7 +186,7 @@ public class Parser {
         return sintaxTokens;
     }
 
-    public LinkedList<SyntaxToken> getCodeblockTokens() {
+    public LinkedList<CodeBlock> getCodeblockTokens() {
         return codeblockTokens;
     }
     

@@ -16,7 +16,11 @@ public class Principal extends javax.swing.JFrame {
     private Reportes reportes; 
     private Controller controller; 
     private Tokens tokens; 
+    private BloquesDeCodigo bloques; 
 
+    
+    
+    
     /**
      * Creates new form Principal
      */
@@ -26,15 +30,18 @@ public class Principal extends javax.swing.JFrame {
         codigo = new Codigo(controller);
         reportes = new Reportes(controller); 
         tokens = new Tokens(controller);
-        tabedPane.add(codigo, "Codigo");
-        tabedPane.add(reportes, "Tokens (Parser)");
-        tabedPane.add(tokens, "Tokens (Lexer)");
+        bloques = new BloquesDeCodigo(controller);
+        
+        tabedPane.add(codigo    , "Codigo"              );
+        tabedPane.add(tokens    , "Tokens (Lexer)"      );
+        tabedPane.add(reportes  , "Tokens (Parser)"     );
+        tabedPane.add(bloques   , "Bloques de codigo"   );
         
         this.controller = controller; 
     }
     
     public void inicializar(){
-        codigo.setTokens(tokens, reportes);
+        codigo.setTokens(tokens, reportes, bloques);
     }
 
     /**

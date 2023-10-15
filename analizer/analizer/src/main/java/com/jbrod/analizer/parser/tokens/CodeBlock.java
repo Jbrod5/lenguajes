@@ -25,14 +25,14 @@ public class CodeBlock extends SyntaxToken {
     }
 
     /**
-     * Agrega un token a la lista del bloque de codigo
+     * Agrega un token a la lista del bloque de codigo.
      **/
     public void agregarToken(SyntaxToken token){
         codeBlock.add(token);
         if(sentencia == null){
             sentencia = "";
         }
-        sentencia = sentencia + token.getSentencia();
+        sentencia = sentencia + " " + token.getSentencia();
     }
     
 }

@@ -4,6 +4,7 @@ package com.jbrod.analizer;
 import com.jbrod.analizer.lexer.Lexer;
 import com.jbrod.analizer.lexer.Token;
 import com.jbrod.analizer.parser.Parser;
+import com.jbrod.analizer.parser.tokens.CodeBlock;
 import com.jbrod.analizer.parser.tokens.SyntaxToken;
 import java.io.IOException;
 import java.util.LinkedList;
@@ -51,7 +52,7 @@ public class Controller {
         return parser.getSintaxTokens();
     }
     
-    public LinkedList<SyntaxToken> getBlocksSyntax(){
+    public LinkedList<CodeBlock> getBlocksSyntax(){
         return parser.getCodeblockTokens();
     }    
 }

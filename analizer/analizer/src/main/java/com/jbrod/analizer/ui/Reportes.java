@@ -37,10 +37,10 @@ public class Reportes extends javax.swing.JPanel {
         for (int i = 0; i < lsToken.size(); i++) {
             SyntaxToken actual = lsToken.get(i);
            
-            model.setValueAt(actual.getSentencia(), i, 0); //Token
-            model.setValueAt(actual.getFila(), i, 1); //Patron
-            model.setValueAt(actual.getColumna(), i, 2); //Lexema
-            model.setValueAt(actual.getTipo(), i, 3); //Linea
+            model.setValueAt(actual.getSentencia()  , i, 0); //Token
+            model.setValueAt(actual.getFila()       , i, 1); //Patron
+            model.setValueAt(actual.getColumna()    , i, 2); //Lexema
+            model.setValueAt(actual.getTipo()       , i, 3); //Linea
            
         }
     }
