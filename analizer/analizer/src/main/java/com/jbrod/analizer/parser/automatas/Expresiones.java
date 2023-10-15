@@ -45,6 +45,31 @@ public class Expresiones {
         Token actual = tokenList.get(i);
         Recurrentes r = new Recurrentes(syntaxList, parser);
         
+        
+        if(actual.getTokenType() == Tokens.IDENTIFIER || actual.getTokenType() == Tokens.INTEGER){
+            sentencia += actual.getLexeme();
+            i++;
+            if(i<tokenList.size()){
+                actual = tokenList.get(i);
+            }
+            
+            if(actual.getTokenType() == Tokens.ARITHMETIC){
+                sentencia += actual.getLexeme();
+                i++;
+                if(i<tokenList.size()){
+                    actual = tokenList.get(i);
+                }
+                
+                if(actual.getTokenType() == Tokens.IDENTIFIER || actual.getTokenType() == Tokens.INTEGER){
+                    sentencia += actual.getLexeme();
+                    syntaxList.add(new SyntaxToken(sentencia, inicial.getRow(), inicial.getColumn(), tipo, i));
+                    return true;
+                }
+                
+            }
+            sentencia = "";
+        }
+        
         //1. Variable / Funcion
         if(actual.getTokenType() == Tokens.IDENTIFIER){
             

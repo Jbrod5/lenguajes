@@ -61,12 +61,14 @@ public class Recurrentes {
     //}
     
     public boolean rango(List<Token> tokenList, int i){
-        int checkpoint = i; 
-        Token inicio = tokenList.get(i);
+        int checkpoint = i; Token inicio = null; 
+        Token actual = null; 
+        if(i < tokenList.size()){
+            inicio = tokenList.get(i);
+            actual = tokenList.get(i);
+        }
         String sentencia = ""; 
         String tipo = "Rango";
-        
-        Token actual;
         actual = tokenList.get(i);
         
         //rango = “ range “     “ ( “   dígito   [  “ , ”   digito ]   [ “ ,“  digito ]    “ ) “ --------------------------
@@ -157,12 +159,15 @@ public class Recurrentes {
     }
     
     public boolean array(List<Token> tokenList, int i){
-        int backup = i; 
-        Token inicio = tokenList.get(i);
+        int backup = i; Token inicio = null; 
+        Token actual = null; 
+        if(i < tokenList.size()){
+            inicio = tokenList.get(i);
+            actual = tokenList.get(i);
+        }
         String sentencia = ""; 
         String tipo = "Array";
         
-        Token actual;
         actual = tokenList.get(i);
         Expresiones ex = new Expresiones(parser, TokenSyntaxList);
         
@@ -225,12 +230,14 @@ public class Recurrentes {
     }
     
     public boolean diccionario(List<Token>  tokenList, int i){
-        int checkpoint = i; 
-        Token inicio = tokenList.get(i);
+        int checkpoint = i; Token inicio = null; 
+        Token actual = null; 
+        if(i < tokenList.size()){
+            inicio = tokenList.get(i);
+            actual = tokenList.get(i);
+        }
         String sentencia = ""; 
         String tipo = "Diccionario";
-        
-        Token actual = tokenList.get(i);
         
         //diccionario = “{”   [ par clave valor ]   “}”			# puede estar vacío
         if(actual.getLexeme().equals("{")){
@@ -280,11 +287,14 @@ public class Recurrentes {
     
     public boolean parClaveValor(List<Token> tokenList, int i){
         //int checkpoint = i;
-        Token inicio = tokenList.get(i);
+        Token inicio = null; 
+        Token actual = null; 
+        if(i < tokenList.size()){
+            inicio = tokenList.get(i);
+            actual = tokenList.get(i);
+        }
         String sentencia = ""; 
         String tipo = "Par clave - valor";
-        
-        Token actual = tokenList.get(i);
         
         //par clave valor = identificador “:” constante			# constante es terminal
         if(actual.getTokenType() == Tokens.IDENTIFIER){
@@ -315,11 +325,17 @@ public class Recurrentes {
     
     public boolean tupla(List<Token> tokenList, int i){
         int checkpoint = i;
-        Token inicio = tokenList.get(i);
+        Token inicio = null; 
+        Token actual = null; 
+        if(i < tokenList.size()){
+            inicio = tokenList.get(i);
+            actual = tokenList.get(i);
+        }
         String sentencia = ""; 
         String tipo = "Tupla";
         
-        Token actual = tokenList.get(i);
+        
+        
         
         //tupla = “(“   {  constante  }  “)”					# son inmutables
         
@@ -374,11 +390,14 @@ public class Recurrentes {
         //expresión condicional = expresión condicional       op log 	  expresión condicional 
         //expresión condicional = ( expresión ) op comp ( expresión )
         int checkpoint = i;
-        Token inicio = tokenList.get(i);
+        Token inicio = null; 
+        Token actual = null; 
+        if(i < tokenList.size()){
+            inicio = tokenList.get(i);
+            actual = tokenList.get(i);
+        }
         String sentencia = ""; 
         String tipo = "Expresión condicional";
-        
-        Token actual = tokenList.get(i);
         
         if(actual.getLexeme().equals("True") || actual.getLexeme().equals("False")){
             //Es una expresion condicional
@@ -394,11 +413,14 @@ public class Recurrentes {
     //else
     public boolean sino(List<Token> tokenList, int i){
         
-        Token inicio = tokenList.get(i);
+        Token inicio = null; 
+        Token actual = null; 
+        if(i < tokenList.size()){
+            inicio = tokenList.get(i);
+            actual = tokenList.get(i);
+        }
         String sentencia = ""; 
         String tipo = "Else";
-        
-        Token actual = tokenList.get(i);
         
         if(actual.getLexeme().equals("else")){
             sentencia += actual.getLexeme();

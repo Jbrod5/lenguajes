@@ -77,9 +77,11 @@ public class Parser {
         
             if(iterador < lexTokens.size()){
             System.out.println(iterador);
+                System.out.println();
             
             Token tokenActual = lexTokens.get(iterador); 
             String lexemaActual = tokenActual.getLexeme();
+            System.out.println("Lexema: " +tokenActual.getLexeme());
             
                 //tokenActual = lexTokens.get(iterador);
                 //lexemaActual = tokenActual.getLexeme();
@@ -107,6 +109,7 @@ public class Parser {
                     }else if(tokenActual.getTokenType() == Tokens.COMMENT){
                         agregarTokenSintactico(new SyntaxToken(lexemaActual, tokenActual.getRow(), tokenActual.getColumn(), "Comentario", iterador));
                         iterador++;
+                        System.out.println("Me encontre con comentario, iterador actual:" + iterador);
                         Parse(lexTokens);
                     }else{
                         agregarTokenSintactico(new SyntaxToken(lexemaActual, tokenActual.getRow(), tokenActual.getColumn(), "No identificado", iterador));
