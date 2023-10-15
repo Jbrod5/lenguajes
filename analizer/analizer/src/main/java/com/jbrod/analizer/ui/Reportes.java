@@ -29,10 +29,11 @@ public class Reportes extends javax.swing.JPanel {
         LinkedList<SyntaxToken> lsToken = controller.getGeneralSyntax();
         
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel(); 
-        model.setColumnCount(5  );
+       // model.setColumnCount(4  );
         model.setRowCount(lsToken.size());
         //Tabla: Sentencia | fila | columna | tipo | 
         
+        System.out.println("size tokens repo: " + lsToken.size());
         for (int i = 0; i < lsToken.size(); i++) {
             SyntaxToken actual = lsToken.get(i);
            
@@ -42,7 +43,6 @@ public class Reportes extends javax.swing.JPanel {
             model.setValueAt(actual.getTipo(), i, 3); //Linea
            
         }
-        jTable1.removeAll();
     }
 
     /**

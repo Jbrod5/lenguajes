@@ -55,6 +55,11 @@ public class Parser {
         funciones = new Funciones(this, sintaxTokens);
     }
     
+    public void limpiarListas(){
+        codeblockTokens.clear();
+        sintaxTokens.clear();
+        iterador = 0; 
+    }
     
     /**
      * Analiza la lista de tokens provenientes del lexer.

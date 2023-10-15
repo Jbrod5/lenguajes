@@ -8,6 +8,7 @@ import com.jbrod.analizer.Controller;
 import com.jbrod.analizer.lexer.Token;
 import java.util.LinkedList;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.html.HTMLEditorKit;
 
 /**
  *
@@ -29,13 +30,18 @@ public class Tokens extends javax.swing.JPanel {
         LinkedList<Token> lsToken = controller.getTokens();
         
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel(); 
-        model.setColumnCount(5  );
+        //model.setColumnCount(0);
         model.setRowCount(lsToken.size());
         //Tabla: Token | Patron | Lexema | Linea | Columna
         
+        System.out.println("size tokens: " + lsToken.size());
         for (int i = 0; i < lsToken.size(); i++) {
             Token actual = lsToken.get(i);
-           
+            /*Object[] fila = {actual.getTokenType(), 
+                                actual.getPattern(),
+                                actual.getLexeme(),
+                                actual.getRow(),
+                                actual.getColumn()};*/
             model.setValueAt(actual.getTokenType    (), i, 0); //Token
             model.setValueAt(actual.getPattern      (), i, 1); //Patron
             model.setValueAt(actual.getLexeme       (), i, 2); //Lexema
@@ -43,7 +49,8 @@ public class Tokens extends javax.swing.JPanel {
             model.setValueAt(actual.getColumn       (), i, 4); //Columna 
            
         }
-        jTable1.removeAll();
+        //jTable1.removeAll();
+
     }
     
     /**
@@ -81,7 +88,7 @@ public class Tokens extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE)
                 .addContainerGap())
@@ -90,8 +97,8 @@ public class Tokens extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 

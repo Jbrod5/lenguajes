@@ -27,7 +27,7 @@ public class Principal extends javax.swing.JFrame {
         reportes = new Reportes(controller); 
         tokens = new Tokens(controller);
         tabedPane.add(codigo, "Codigo");
-        tabedPane.add(reportes, "Reportes");
+        tabedPane.add(reportes, "Tokens (Parser)");
         tabedPane.add(tokens, "Tokens (Lexer)");
         
         this.controller = controller; 

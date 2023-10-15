@@ -27,6 +27,7 @@ public class Lexer {
      **/
     public void Analize(String code) throws IOException{
         /* El Tokenizer generado por JFlex usa un Reader */
+        tokenList.clear();
         Reader stringReader = new StringReader(code);
         tokenizer = new Tokenizer(stringReader);
         

@@ -32,7 +32,7 @@ public class Controller {
     public void analize( String code ) throws IOException{
         lexer.Analize(code);
         tokens = lexer.getTokenList();
-        
+        parser.limpiarListas();
         parser.Parse(tokens);
         
     }
