@@ -13,6 +13,7 @@ public class Funcion extends CodeBlock {
     
     public Funcion(LinkedList <String> params, String sentencia, int fila, int columna, String tipo, int posicionFinalLista) {
         super(sentencia,fila,columna,tipo, posicionFinalLista);
+        params = new LinkedList<>();
         this.params = params; 
     }
     

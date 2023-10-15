@@ -13,6 +13,7 @@ public class CodeBlock extends SyntaxToken {
     
     public CodeBlock(String sentencia, int fila, int columna, String tipo, int posicionFinalLista) {
         super(sentencia, fila, columna, tipo, posicionFinalLista);
+        codeBlock = new LinkedList<>();
     }
 
     public LinkedList<SyntaxToken> getCodeBlock() {

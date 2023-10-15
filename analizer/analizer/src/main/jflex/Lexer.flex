@@ -14,6 +14,8 @@ import  com.jbrod.analizer.lexer.Tokens.*;
 
 /* genera tipo de dato Token */   
 %type Token     
+%line
+%column
 
 /* MACROS - Expresiones regulares */
 
